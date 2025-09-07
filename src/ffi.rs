@@ -2918,6 +2918,20 @@ pub struct demo_api_s {
     >,
 }
 pub type demo_api_t = demo_api_s;
+pub const VoiceTweakControl_MicrophoneVolume: VoiceTweakControl = 0;
+pub const VoiceTweakControl_OtherSpeakerScale: VoiceTweakControl = 1;
+pub type VoiceTweakControl = ::core::ffi::c_uint;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct IVoiceTweak_s {
+    pub StartVoiceTweakMode: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub EndVoiceTweakMode: ::core::option::Option<unsafe extern "C" fn()>,
+    pub SetControlFloat:
+        ::core::option::Option<unsafe extern "C" fn(iControl: VoiceTweakControl, value: f32)>,
+    pub GetControlFloat:
+        ::core::option::Option<unsafe extern "C" fn(iControl: VoiceTweakControl) -> f32>,
+}
+pub type IVoiceTweak = IVoiceTweak_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct event_api_s {
@@ -8357,10 +8371,5 @@ pub type UITEXTAPI = ::core::option::Option<
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct grasshdr_s {
-    pub _address: u8,
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct IVoiceTweak_s {
     pub _address: u8,
 }
