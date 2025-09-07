@@ -14,6 +14,7 @@
 #include "render_api.h"
 #include "kbutton.h"
 
+#include "pm_movevars.h"
 #include "pm_defs.h"
 #include "cdll_int.h"
 #include "cdll_exp.h"
@@ -26,6 +27,7 @@
 #include "edict.h"
 #include "com_model.h"
 
+#include "pm_movevars.h"
 #include "pm_defs.h"
 #include "eiface.h"
 
