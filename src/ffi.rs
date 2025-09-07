@@ -2909,6 +2909,17 @@ pub struct playermove_s {
 pub type playermove_t = playermove_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct demo_api_s {
+    pub IsRecording: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub IsPlayingback: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub IsTimeDemo: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub WriteBuffer: ::core::option::Option<
+        unsafe extern "C" fn(size: ::core::ffi::c_int, buffer: *mut ::core::ffi::c_uchar),
+    >,
+}
+pub type demo_api_t = demo_api_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct event_api_s {
     pub version: ::core::ffi::c_int,
     pub EV_PlaySound: ::core::option::Option<
@@ -8346,11 +8357,6 @@ pub type UITEXTAPI = ::core::option::Option<
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct grasshdr_s {
-    pub _address: u8,
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct demo_api_s {
     pub _address: u8,
 }
 #[repr(C)]

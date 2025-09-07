@@ -16,6 +16,7 @@
 
 #include "pm_movevars.h"
 #include "pm_defs.h"
+#include "demo_api.h"
 #include "event_api.h"
 #include "cdll_int.h"
 #include "cdll_exp.h"
