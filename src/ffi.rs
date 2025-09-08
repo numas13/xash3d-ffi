@@ -1018,9 +1018,15 @@ pub const GENERIC_UPDATE_PAGE: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"GenericUpdatePage\0") };
 pub type byte = u8;
 pub type vec_t = f32;
-pub type vec2_t = [vec_t; 2usize];
-pub type vec3_t = [vec_t; 3usize];
-pub type vec4_t = [vec_t; 4usize];
+#[repr(transparent)]
+#[derive(Debug, Copy, Clone)]
+pub struct vec2_t(pub [vec_t; 2usize]);
+#[repr(transparent)]
+#[derive(Debug, Copy, Clone)]
+pub struct vec3_t(pub [vec_t; 3usize]);
+#[repr(transparent)]
+#[derive(Debug, Copy, Clone)]
+pub struct vec4_t(pub [vec_t; 4usize]);
 pub type quat_t = [vec_t; 4usize];
 pub type rgba_t = [byte; 4usize];
 pub type rgb_t = [byte; 3usize];

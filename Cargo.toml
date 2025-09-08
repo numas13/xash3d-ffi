@@ -8,5 +8,10 @@ rust-version = "1.64"
 edition = "2021"
 authors = ["Denis Drakhnia <numas13@gmail.com>"]
 
+[features]
+std = []
+libm = ["dep:libm"]
+
 [dependencies]
 libc = { version = "0.2", default-features = false }
+libm = { version = "0.2", optional = true }

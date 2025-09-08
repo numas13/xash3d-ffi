@@ -11,8 +11,12 @@
 #![allow(unnecessary_transmutes)]
 #![warn(unknown_lints)]
 
+#[cfg(feature = "std")]
+extern crate std;
+
 #[macro_use]
 mod macros;
+mod vec;
 
 use core::ffi::{c_int, c_ushort};
 

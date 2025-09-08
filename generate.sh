@@ -26,6 +26,7 @@ exec bindgen \
     --blocklist-var "m_bytenormals" \
     --blocklist-var "svc_.*strings" \
     --opaque-type va_list \
+    --new-type-alias "vec[234]_t" \
     "wrapper.h" \
     -- \
     -Ixash3d-fwgs \
