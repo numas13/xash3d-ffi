@@ -13,12 +13,14 @@
 #include "com_model.h"
 #include "render_api.h"
 #include "kbutton.h"
+#include "screenfade.h"
 
 #include "pm_movevars.h"
 #include "pm_defs.h"
 #include "demo_api.h"
 #include "ivoicetweak.h"
 #include "event_api.h"
+#include "r_studioint.h"
 #include "cdll_int.h"
 #include "cdll_exp.h"
 
@@ -43,6 +45,7 @@
 #include "com_model.h"
 #include "sprite.h"
 
+#include "r_studioint.h"
 #include "ref_api.h"
 
 // menu dll

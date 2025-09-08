@@ -471,6 +471,8 @@ pub const PM_CUSTOM_IGNORE: u32 = 16;
 pub const PM_TRACELINE_PHYSENTSONLY: u32 = 0;
 pub const PM_TRACELINE_ANYVISIBLE: u32 = 1;
 pub const EVENT_API_VERSION: u32 = 1;
+pub const STUDIO_INTERFACE_VERSION: u32 = 1;
+pub const SV_BLENDING_INTERFACE_VERSION: u32 = 1;
 pub const MAX_ALIAS_NAME: u32 = 32;
 pub const SCRINFO_SCREENFLASH: u32 = 1;
 pub const SCRINFO_STRETCHED: u32 = 2;
@@ -2565,6 +2567,20 @@ pub struct kbutton_t {
     pub down: [::core::ffi::c_int; 2usize],
     pub state: ::core::ffi::c_int,
 }
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct screenfade_s {
+    pub fadeSpeed: f32,
+    pub fadeEnd: f32,
+    pub fadeTotalEnd: f32,
+    pub fadeReset: f32,
+    pub fader: byte,
+    pub fadeg: byte,
+    pub fadeb: byte,
+    pub fadealpha: byte,
+    pub fadeFlags: ::core::ffi::c_int,
+}
+pub type screenfade_t = screenfade_s;
 pub type movevars_t = movevars_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3077,6 +3093,160 @@ pub struct event_api_s {
 pub type event_api_t = event_api_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct engine_studio_api_s {
+    pub Mem_Calloc: ::core::option::Option<
+        unsafe extern "C" fn(number: ::core::ffi::c_int, size: usize) -> *mut ::core::ffi::c_void,
+    >,
+    pub Cache_Check: ::core::option::Option<
+        unsafe extern "C" fn(c: *mut cache_user_s) -> *mut ::core::ffi::c_void,
+    >,
+    pub LoadCacheFile: ::core::option::Option<
+        unsafe extern "C" fn(path: *const ::core::ffi::c_char, cu: *mut cache_user_s),
+    >,
+    pub Mod_ForName: ::core::option::Option<
+        unsafe extern "C" fn(
+            name: *const ::core::ffi::c_char,
+            crash_if_missing: ::core::ffi::c_int,
+        ) -> *mut model_s,
+    >,
+    pub Mod_Extradata: ::core::option::Option<
+        unsafe extern "C" fn(mod_: *mut model_s) -> *mut ::core::ffi::c_void,
+    >,
+    pub GetModelByIndex:
+        ::core::option::Option<unsafe extern "C" fn(index: ::core::ffi::c_int) -> *mut model_s>,
+    pub GetCurrentEntity: ::core::option::Option<unsafe extern "C" fn() -> *mut cl_entity_s>,
+    pub PlayerInfo: ::core::option::Option<
+        unsafe extern "C" fn(index: ::core::ffi::c_int) -> *mut player_info_s,
+    >,
+    pub GetPlayerState: ::core::option::Option<
+        unsafe extern "C" fn(index: ::core::ffi::c_int) -> *mut entity_state_s,
+    >,
+    pub GetViewEntity: ::core::option::Option<unsafe extern "C" fn() -> *mut cl_entity_s>,
+    pub GetTimes: ::core::option::Option<
+        unsafe extern "C" fn(framecount: *mut ::core::ffi::c_int, current: *mut f64, old: *mut f64),
+    >,
+    pub GetCvar: ::core::option::Option<
+        unsafe extern "C" fn(name: *const ::core::ffi::c_char) -> *mut cvar_s,
+    >,
+    pub GetViewInfo: ::core::option::Option<
+        unsafe extern "C" fn(origin: *mut f32, upv: *mut f32, rightv: *mut f32, vpnv: *mut f32),
+    >,
+    pub GetChromeSprite: ::core::option::Option<unsafe extern "C" fn() -> *mut model_s>,
+    pub GetModelCounters: ::core::option::Option<
+        unsafe extern "C" fn(s: *mut *mut ::core::ffi::c_int, a: *mut *mut ::core::ffi::c_int),
+    >,
+    pub GetAliasScale: ::core::option::Option<unsafe extern "C" fn(x: *mut f32, y: *mut f32)>,
+    pub StudioGetBoneTransform:
+        ::core::option::Option<unsafe extern "C" fn() -> *mut *mut *mut *mut f32>,
+    pub StudioGetLightTransform:
+        ::core::option::Option<unsafe extern "C" fn() -> *mut *mut *mut *mut f32>,
+    pub StudioGetAliasTransform:
+        ::core::option::Option<unsafe extern "C" fn() -> *mut *mut *mut f32>,
+    pub StudioGetRotationMatrix:
+        ::core::option::Option<unsafe extern "C" fn() -> *mut *mut *mut f32>,
+    pub StudioSetupModel: ::core::option::Option<
+        unsafe extern "C" fn(
+            bodypart: ::core::ffi::c_int,
+            ppbodypart: *mut *mut ::core::ffi::c_void,
+            ppsubmodel: *mut *mut ::core::ffi::c_void,
+        ),
+    >,
+    pub StudioCheckBBox: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub StudioDynamicLight:
+        ::core::option::Option<unsafe extern "C" fn(ent: *mut cl_entity_s, plight: *mut alight_s)>,
+    pub StudioEntityLight: ::core::option::Option<unsafe extern "C" fn(plight: *mut alight_s)>,
+    pub StudioSetupLighting: ::core::option::Option<unsafe extern "C" fn(plighting: *mut alight_s)>,
+    pub StudioDrawPoints: ::core::option::Option<unsafe extern "C" fn()>,
+    pub StudioDrawHulls: ::core::option::Option<unsafe extern "C" fn()>,
+    pub StudioDrawAbsBBox: ::core::option::Option<unsafe extern "C" fn()>,
+    pub StudioDrawBones: ::core::option::Option<unsafe extern "C" fn()>,
+    pub StudioSetupSkin: ::core::option::Option<
+        unsafe extern "C" fn(ptexturehdr: *mut ::core::ffi::c_void, index: ::core::ffi::c_int),
+    >,
+    pub StudioSetRemapColors: ::core::option::Option<
+        unsafe extern "C" fn(top: ::core::ffi::c_int, bottom: ::core::ffi::c_int),
+    >,
+    pub SetupPlayerModel:
+        ::core::option::Option<unsafe extern "C" fn(index: ::core::ffi::c_int) -> *mut model_s>,
+    pub StudioClientEvents: ::core::option::Option<unsafe extern "C" fn()>,
+    pub GetForceFaceFlags: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub SetForceFaceFlags: ::core::option::Option<unsafe extern "C" fn(flags: ::core::ffi::c_int)>,
+    pub StudioSetHeader:
+        ::core::option::Option<unsafe extern "C" fn(header: *mut ::core::ffi::c_void)>,
+    pub SetRenderModel: ::core::option::Option<unsafe extern "C" fn(model: *mut model_s)>,
+    pub SetupRenderer: ::core::option::Option<unsafe extern "C" fn(rendermode: ::core::ffi::c_int)>,
+    pub RestoreRenderer: ::core::option::Option<unsafe extern "C" fn()>,
+    pub SetChromeOrigin: ::core::option::Option<unsafe extern "C" fn()>,
+    pub IsHardware: ::core::option::Option<unsafe extern "C" fn() -> ::core::ffi::c_int>,
+    pub GL_StudioDrawShadow: ::core::option::Option<unsafe extern "C" fn()>,
+    pub GL_SetRenderMode: ::core::option::Option<unsafe extern "C" fn(mode: ::core::ffi::c_int)>,
+    pub StudioSetRenderamt:
+        ::core::option::Option<unsafe extern "C" fn(iRenderamt: ::core::ffi::c_int)>,
+    pub StudioSetCullState: ::core::option::Option<unsafe extern "C" fn(iCull: ::core::ffi::c_int)>,
+    pub StudioRenderShadow: ::core::option::Option<
+        unsafe extern "C" fn(
+            iSprite: ::core::ffi::c_int,
+            p1: *mut f32,
+            p2: *mut f32,
+            p3: *mut f32,
+            p4: *mut f32,
+        ),
+    >,
+}
+pub type engine_studio_api_t = engine_studio_api_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct server_studio_api_s {
+    pub Mem_Calloc: ::core::option::Option<
+        unsafe extern "C" fn(number: ::core::ffi::c_int, size: usize) -> *mut ::core::ffi::c_void,
+    >,
+    pub Cache_Check: ::core::option::Option<
+        unsafe extern "C" fn(c: *mut cache_user_s) -> *mut ::core::ffi::c_void,
+    >,
+    pub LoadCacheFile: ::core::option::Option<
+        unsafe extern "C" fn(path: *const ::core::ffi::c_char, cu: *mut cache_user_s),
+    >,
+    pub Mod_Extradata: ::core::option::Option<
+        unsafe extern "C" fn(mod_: *mut model_s) -> *mut ::core::ffi::c_void,
+    >,
+}
+pub type server_studio_api_t = server_studio_api_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct r_studio_interface_s {
+    pub version: ::core::ffi::c_int,
+    pub StudioDrawModel: ::core::option::Option<
+        unsafe extern "C" fn(flags: ::core::ffi::c_int) -> ::core::ffi::c_int,
+    >,
+    pub StudioDrawPlayer: ::core::option::Option<
+        unsafe extern "C" fn(
+            flags: ::core::ffi::c_int,
+            pplayer: *mut entity_state_s,
+        ) -> ::core::ffi::c_int,
+    >,
+}
+pub type r_studio_interface_t = r_studio_interface_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct sv_blending_interface_s {
+    pub version: ::core::ffi::c_int,
+    pub SV_StudioSetupBones: ::core::option::Option<
+        unsafe extern "C" fn(
+            pModel: *mut model_s,
+            frame: f32,
+            sequence: ::core::ffi::c_int,
+            angles: *const vec3_t,
+            origin: *const vec3_t,
+            pcontroller: *const byte,
+            pblending: *const byte,
+            iBone: ::core::ffi::c_int,
+            pEdict: *const edict_t,
+        ),
+    >,
+}
+pub type sv_blending_interface_t = sv_blending_interface_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct cmdalias_s {
     pub next: *mut cmdalias_s,
     pub name: [::core::ffi::c_char; 32usize],
@@ -3166,11 +3336,6 @@ pub struct hud_player_info_s {
     pub m_nSteamID: u64,
 }
 pub type hud_player_info_t = hud_player_info_s;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct screenfade_s {
-    _unused: [u8; 0],
-}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagPOINT {
@@ -3684,16 +3849,6 @@ pub struct cl_enginefuncs_s {
     >,
 }
 pub type cl_enginefunc_t = cl_enginefuncs_s;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct engine_studio_api_s {
-    _unused: [u8; 0],
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct r_studio_interface_s {
-    _unused: [u8; 0],
-}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct cldll_func_s {
