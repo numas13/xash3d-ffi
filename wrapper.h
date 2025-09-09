@@ -1,6 +1,9 @@
 // some headers expect it to be defined
 #define STDINT_H <stdint.h>
 
+// required for convar_s
+#define ENGINE_DLL 1
+
 // client dll
 #include "xash3d_types.h"
 #include "xash3d_mathlib.h"

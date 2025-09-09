@@ -4216,6 +4216,15 @@ pub const FCVAR_GLCONFIG: _bindgen_ty_7 = 4096;
 pub const FCVAR_CHANGED: _bindgen_ty_7 = 8192;
 pub const FCVAR_GAMEUIDLL: _bindgen_ty_7 = 16384;
 pub const FCVAR_CHEAT: _bindgen_ty_7 = 32768;
+pub const FCVAR_RENDERINFO: _bindgen_ty_7 = 65536;
+pub const FCVAR_READ_ONLY: _bindgen_ty_7 = 131072;
+pub const FCVAR_EXTENDED: _bindgen_ty_7 = 262144;
+pub const FCVAR_ALLOCATED: _bindgen_ty_7 = 524288;
+pub const FCVAR_VIDRESTART: _bindgen_ty_7 = 1048576;
+pub const FCVAR_TEMPORARY: _bindgen_ty_7 = 2097152;
+pub const FCVAR_MOVEVARS: _bindgen_ty_7 = 4194304;
+pub const FCVAR_USER_CREATED: _bindgen_ty_7 = 8388608;
+pub const FCVAR_REFDLL: _bindgen_ty_7 = 536870912;
 pub const FCVAR_LATCH: _bindgen_ty_7 = 1073741824;
 pub type _bindgen_ty_7 = ::core::ffi::c_uint;
 #[repr(C)]
@@ -4228,6 +4237,18 @@ pub struct cvar_s {
     pub next: *mut cvar_s,
 }
 pub type cvar_t = cvar_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct convar_s {
+    pub name: *mut ::core::ffi::c_char,
+    pub string: *mut ::core::ffi::c_char,
+    pub flags: u32,
+    pub value: f32,
+    pub next: *mut convar_s,
+    pub desc: *mut ::core::ffi::c_char,
+    pub def_string: *mut ::core::ffi::c_char,
+}
+pub type convar_t = convar_s;
 pub const ALERT_TYPE_at_notice: ALERT_TYPE = 0;
 pub const ALERT_TYPE_at_console: ALERT_TYPE = 1;
 pub const ALERT_TYPE_at_aiconsole: ALERT_TYPE = 2;
@@ -7224,12 +7245,6 @@ pub struct remap_info_s {
     pub model: *mut model_t,
 }
 pub type remap_info_t = remap_info_s;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct convar_s {
-    _unused: [u8; 0],
-}
-pub type convar_t = convar_s;
 pub const ref_parm_e_PARM_DEV_OVERVIEW: ref_parm_e = -1;
 pub const ref_parm_e_PARM_THIRDPERSON: ref_parm_e = -2;
 pub const ref_parm_e_PARM_QUAKE_COMPATIBLE: ref_parm_e = -3;
