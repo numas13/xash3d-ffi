@@ -19,6 +19,7 @@ render-api = []
 net-api = []
 fs-api = []
 tri-api = []
+event-api = []
 
 # dlls
 all = ["client", "server", "menu", "render"]
@@ -29,6 +30,7 @@ client = [
     "render-api",
     "net-api",
     "tri-api",
+    "event-api",
 ]
 server = [
     "player-move",

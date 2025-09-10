@@ -33,3 +33,10 @@ pub mod tri {
 
     include!("generated/tri_api.rs");
 }
+
+#[cfg(feature = "event-api")]
+pub mod event {
+    use crate::common::*;
+
+    include!("generated/event_api.rs");
+}

@@ -82,6 +82,10 @@ generate "wrapper-fs-api.h" "src/generated/fs_api.rs" \
     --no-recursive-allowlist \
     --allowlist-file "xash3d-fwgs/filesystem/filesystem.h"
 
+generate "wrapper-event-api.h" "src/generated/event_api.rs" \
+    --no-recursive-allowlist \
+    --allowlist-file "xash3d-fwgs/common/event_api.h"
+
 generate "wrapper-player-move.h" "src/generated/player_move.rs" \
     --no-recursive-allowlist \
     --allowlist-file "xash3d-fwgs/pm_shared/pm_movevars.h" \
@@ -104,7 +108,6 @@ generate "wrapper-client.h" "src/generated/client.rs" \
     --allowlist-file "xash3d-fwgs/common/ivoicetweak.h" \
     --allowlist-file "xash3d-fwgs/common/demo_api.h" \
     --allowlist-file "xash3d-fwgs/common/r_efx.h" \
-    --allowlist-file "xash3d-fwgs/common/event_api.h" \
     --allowlist-file "xash3d-fwgs/engine/cdll_int.h" \
     --allowlist-file "xash3d-fwgs/engine/cdll_exp.h"
 
