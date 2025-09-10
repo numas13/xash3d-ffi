@@ -24,6 +24,7 @@ function generate() {
     wrapper_h="$1"
     output="$2"
     shift 2
+    echo "generate $output ($wrapper_h)"
     bindgen \
         "include/$wrapper_h" \
         --rust-target $MSRV \
