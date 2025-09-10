@@ -1,3 +1,5 @@
+//! Bindings to shared APIs.
+
 #[cfg(feature = "studio-api")]
 pub mod studio {
     use crate::common::*;

@@ -1,3 +1,5 @@
+//! Bindings to a client DLL.
+
 use crate::common::*;
 
 use crate::api::efx::*;

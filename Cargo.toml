@@ -10,21 +10,19 @@ authors = ["Denis Drakhnia <numas13@gmail.com>"]
 
 [features]
 default = ["all"]
+
+## The std feature enables using of Rust's standard library
 std = []
+## The libm feature enables additional methods for vectors in no-std environments
 libm = ["dep:libm"]
 
-# shared apis
-studio-api = []
-render-api = []
-net-api = []
-fs-api = []
-tri-api = []
-event-api = []
-efx-api = []
+#! ### Bindings for DLLs
 
-# dlls
+## The all feature enables bindings to all supported DLLs
 all = ["client", "server", "menu", "render"]
+## The player-move feature enables bindings to a shared player move code
 player-move = []
+## The client feature enables bindings to a client DLL
 client = [
     "player-move",
     "studio-api",
@@ -34,18 +32,34 @@ client = [
     "event-api",
     "efx-api",
 ]
+## The server feature enables bindings to a server DLL
 server = [
     "player-move",
 ]
+## The menu feature enables bindings to a menu DLL
 menu = [
     "net-api",
 ]
+## The render feature enables bindings to a render DLL
 render = [
     "studio-api",
     "render-api",
     "fs-api",
     "tri-api",
 ]
+
+#! ### Bindings to shared APIs
+
+studio-api = []
+render-api = []
+net-api = []
+fs-api = []
+tri-api = []
+event-api = []
+efx-api = []
+
+[package.metadata.docs.rs]
+all-features = true
 
 [dependencies]
 libc = { version = "0.2", default-features = false }

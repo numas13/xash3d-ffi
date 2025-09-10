@@ -1,3 +1,7 @@
+//! Common definitions.
+
+#![allow(clippy::missing_safety_doc)]
+
 mod vec;
 
 use core::ffi::{c_int, c_ushort};
