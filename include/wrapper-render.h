@@ -1,6 +1,7 @@
 #define REF_DLL 1
 
 #include "wrapper-common.h"
+#include "wrapper-player-move.h"
 #include "wrapper-render-api.h"
 #include "wrapper-fs-api.h"
 #include "wrapper-studio-api.h"

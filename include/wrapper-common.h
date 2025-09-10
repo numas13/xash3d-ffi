@@ -9,12 +9,12 @@
 #include "common/kbutton.h"
 #include "common/screenfade.h"
 #include "common/pmtrace.h"
+
+#include "pm_shared/pm_movevars.h"
 #include "common/ref_params.h"
+
 #include "common/wrect.h"
 #include "common/particledef.h"
 #include "common/beamdef.h"
 #include "common/dlight.h"
 #include "common/netadr.h"
-
-#include "pm_shared/pm_movevars.h"
-#include "pm_shared/pm_defs.h"

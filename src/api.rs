@@ -39,6 +39,7 @@ pub mod tri {
 #[cfg(feature = "event-api")]
 pub mod event {
     use crate::common::*;
+    use crate::player_move::*;
 
     include!("generated/event_api.rs");
 }
@@ -53,6 +54,7 @@ pub mod efx {
 #[cfg(feature = "phys-api")]
 pub mod phys {
     use crate::common::*;
+    use crate::player_move::*;
 
     use crate::api::render::*;
     use crate::api::tri::*;

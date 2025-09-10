@@ -418,17 +418,6 @@ pub const FBEAM_ENDVISIBLE: u32 = 536870912;
 pub const FBEAM_ISACTIVE: u32 = 1073741824;
 pub const FBEAM_FOREVER: u32 = 2147483648;
 pub const PORT_ANY: i32 = -1;
-pub const MAX_PHYSENTS: u32 = 600;
-pub const MAX_MOVEENTS: u32 = 64;
-pub const MAX_CLIP_PLANES: u32 = 5;
-pub const PM_NORMAL: u32 = 0;
-pub const PM_STUDIO_IGNORE: u32 = 1;
-pub const PM_STUDIO_BOX: u32 = 2;
-pub const PM_GLASS_IGNORE: u32 = 4;
-pub const PM_WORLD_ONLY: u32 = 8;
-pub const PM_CUSTOM_IGNORE: u32 = 16;
-pub const PM_TRACELINE_PHYSENTSONLY: u32 = 0;
-pub const PM_TRACELINE_ANYVISIBLE: u32 = 1;
 pub type byte = u8;
 pub type vec_t = f32;
 #[repr(transparent)]
@@ -1460,6 +1449,47 @@ pub struct pmtrace_s {
     pub deltavelocity: vec3_t,
     pub hitgroup: ::core::ffi::c_int,
 }
+pub type movevars_t = movevars_s;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct movevars_s {
+    pub gravity: f32,
+    pub stopspeed: f32,
+    pub maxspeed: f32,
+    pub spectatormaxspeed: f32,
+    pub accelerate: f32,
+    pub airaccelerate: f32,
+    pub wateraccelerate: f32,
+    pub friction: f32,
+    pub edgefriction: f32,
+    pub waterfriction: f32,
+    pub entgravity: f32,
+    pub bounce: f32,
+    pub stepsize: f32,
+    pub maxvelocity: f32,
+    pub zmax: f32,
+    pub waveHeight: f32,
+    pub footsteps: qboolean,
+    pub skyName: [::core::ffi::c_char; 32usize],
+    pub rollangle: f32,
+    pub rollspeed: f32,
+    pub skycolor_r: f32,
+    pub skycolor_g: f32,
+    pub skycolor_b: f32,
+    pub skyvec_x: f32,
+    pub skyvec_y: f32,
+    pub skyvec_z: f32,
+    pub features: ::core::ffi::c_int,
+    pub fog_settings: ::core::ffi::c_int,
+    pub wateralpha: f32,
+    pub skydir_x: f32,
+    pub skydir_y: f32,
+    pub skydir_z: f32,
+    pub skyangle: f32,
+}
+extern "C" {
+    pub static mut movevars: movevars_t;
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ref_params_s {
@@ -1634,333 +1664,6 @@ pub union netadr_s__bindgen_ty_1__bindgen_ty_1__bindgen_ty_1 {
     pub ip4: u32,
 }
 pub type netadr_t = netadr_s;
-pub type movevars_t = movevars_s;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct movevars_s {
-    pub gravity: f32,
-    pub stopspeed: f32,
-    pub maxspeed: f32,
-    pub spectatormaxspeed: f32,
-    pub accelerate: f32,
-    pub airaccelerate: f32,
-    pub wateraccelerate: f32,
-    pub friction: f32,
-    pub edgefriction: f32,
-    pub waterfriction: f32,
-    pub entgravity: f32,
-    pub bounce: f32,
-    pub stepsize: f32,
-    pub maxvelocity: f32,
-    pub zmax: f32,
-    pub waveHeight: f32,
-    pub footsteps: qboolean,
-    pub skyName: [::core::ffi::c_char; 32usize],
-    pub rollangle: f32,
-    pub rollspeed: f32,
-    pub skycolor_r: f32,
-    pub skycolor_g: f32,
-    pub skycolor_b: f32,
-    pub skyvec_x: f32,
-    pub skyvec_y: f32,
-    pub skyvec_z: f32,
-    pub features: ::core::ffi::c_int,
-    pub fog_settings: ::core::ffi::c_int,
-    pub wateralpha: f32,
-    pub skydir_x: f32,
-    pub skydir_y: f32,
-    pub skydir_z: f32,
-    pub skyangle: f32,
-}
-extern "C" {
-    pub static mut movevars: movevars_t;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct physent_s {
-    pub name: [::core::ffi::c_char; 32usize],
-    pub player: ::core::ffi::c_int,
-    pub origin: vec3_t,
-    pub model: *mut model_s,
-    pub studiomodel: *mut model_s,
-    pub mins: vec3_t,
-    pub maxs: vec3_t,
-    pub info: ::core::ffi::c_int,
-    pub angles: vec3_t,
-    pub solid: ::core::ffi::c_int,
-    pub skin: ::core::ffi::c_int,
-    pub rendermode: ::core::ffi::c_int,
-    pub frame: f32,
-    pub sequence: ::core::ffi::c_int,
-    pub controller: [byte; 4usize],
-    pub blending: [byte; 2usize],
-    pub movetype: ::core::ffi::c_int,
-    pub takedamage: ::core::ffi::c_int,
-    pub blooddecal: ::core::ffi::c_int,
-    pub team: ::core::ffi::c_int,
-    pub classnumber: ::core::ffi::c_int,
-    pub iuser1: ::core::ffi::c_int,
-    pub iuser2: ::core::ffi::c_int,
-    pub iuser3: ::core::ffi::c_int,
-    pub iuser4: ::core::ffi::c_int,
-    pub fuser1: f32,
-    pub fuser2: f32,
-    pub fuser3: f32,
-    pub fuser4: f32,
-    pub vuser1: vec3_t,
-    pub vuser2: vec3_t,
-    pub vuser3: vec3_t,
-    pub vuser4: vec3_t,
-}
-pub type physent_t = physent_s;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct playermove_s {
-    pub player_index: ::core::ffi::c_int,
-    pub server: qboolean,
-    pub multiplayer: qboolean,
-    pub time: f32,
-    pub frametime: f32,
-    pub forward: vec3_t,
-    pub right: vec3_t,
-    pub up: vec3_t,
-    pub origin: vec3_t,
-    pub angles: vec3_t,
-    pub oldangles: vec3_t,
-    pub velocity: vec3_t,
-    pub movedir: vec3_t,
-    pub basevelocity: vec3_t,
-    pub view_ofs: vec3_t,
-    pub flDuckTime: f32,
-    pub bInDuck: qboolean,
-    pub flTimeStepSound: ::core::ffi::c_int,
-    pub iStepLeft: ::core::ffi::c_int,
-    pub flFallVelocity: f32,
-    pub punchangle: vec3_t,
-    pub flSwimTime: f32,
-    pub flNextPrimaryAttack: f32,
-    pub effects: ::core::ffi::c_int,
-    pub flags: ::core::ffi::c_int,
-    pub usehull: ::core::ffi::c_int,
-    pub gravity: f32,
-    pub friction: f32,
-    pub oldbuttons: ::core::ffi::c_int,
-    pub waterjumptime: f32,
-    pub dead: qboolean,
-    pub deadflag: ::core::ffi::c_int,
-    pub spectator: ::core::ffi::c_int,
-    pub movetype: ::core::ffi::c_int,
-    pub onground: ::core::ffi::c_int,
-    pub waterlevel: ::core::ffi::c_int,
-    pub watertype: ::core::ffi::c_int,
-    pub oldwaterlevel: ::core::ffi::c_int,
-    pub sztexturename: [::core::ffi::c_char; 256usize],
-    pub chtexturetype: ::core::ffi::c_char,
-    pub maxspeed: f32,
-    pub clientmaxspeed: f32,
-    pub iuser1: ::core::ffi::c_int,
-    pub iuser2: ::core::ffi::c_int,
-    pub iuser3: ::core::ffi::c_int,
-    pub iuser4: ::core::ffi::c_int,
-    pub fuser1: f32,
-    pub fuser2: f32,
-    pub fuser3: f32,
-    pub fuser4: f32,
-    pub vuser1: vec3_t,
-    pub vuser2: vec3_t,
-    pub vuser3: vec3_t,
-    pub vuser4: vec3_t,
-    pub numphysent: ::core::ffi::c_int,
-    pub physents: [physent_t; 600usize],
-    pub nummoveent: ::core::ffi::c_int,
-    pub moveents: [physent_t; 64usize],
-    pub numvisent: ::core::ffi::c_int,
-    pub visents: [physent_t; 600usize],
-    pub cmd: usercmd_t,
-    pub numtouch: ::core::ffi::c_int,
-    pub touchindex: [pmtrace_t; 600usize],
-    pub physinfo: [::core::ffi::c_char; 256usize],
-    pub movevars: *mut movevars_s,
-    pub player_mins: [vec3_t; 4usize],
-    pub player_maxs: [vec3_t; 4usize],
-    pub PM_Info_ValueForKey: ::core::option::Option<
-        unsafe extern "C" fn(
-            s: *const ::core::ffi::c_char,
-            key: *const ::core::ffi::c_char,
-        ) -> *const ::core::ffi::c_char,
-    >,
-    pub PM_Particle: ::core::option::Option<
-        unsafe extern "C" fn(
-            origin: *const f32,
-            color: ::core::ffi::c_int,
-            life: f32,
-            zpos: ::core::ffi::c_int,
-            zvel: ::core::ffi::c_int,
-        ),
-    >,
-    pub PM_TestPlayerPosition: ::core::option::Option<
-        unsafe extern "C" fn(pos: *mut f32, ptrace: *mut pmtrace_t) -> ::core::ffi::c_int,
-    >,
-    pub Con_NPrintf: ::core::option::Option<
-        unsafe extern "C" fn(idx: ::core::ffi::c_int, fmt: *const ::core::ffi::c_char, ...),
-    >,
-    pub Con_DPrintf:
-        ::core::option::Option<unsafe extern "C" fn(fmt: *const ::core::ffi::c_char, ...)>,
-    pub Con_Printf:
-        ::core::option::Option<unsafe extern "C" fn(fmt: *const ::core::ffi::c_char, ...)>,
-    pub Sys_FloatTime: ::core::option::Option<unsafe extern "C" fn() -> f64>,
-    pub PM_StuckTouch: ::core::option::Option<
-        unsafe extern "C" fn(hitent: ::core::ffi::c_int, ptraceresult: *mut pmtrace_t),
-    >,
-    pub PM_PointContents: ::core::option::Option<
-        unsafe extern "C" fn(
-            p: *mut f32,
-            truecontents: *mut ::core::ffi::c_int,
-        ) -> ::core::ffi::c_int,
-    >,
-    pub PM_TruePointContents:
-        ::core::option::Option<unsafe extern "C" fn(p: *mut f32) -> ::core::ffi::c_int>,
-    pub PM_HullPointContents: ::core::option::Option<
-        unsafe extern "C" fn(
-            hull: *mut hull_s,
-            num: ::core::ffi::c_int,
-            p: *mut f32,
-        ) -> ::core::ffi::c_int,
-    >,
-    pub PM_PlayerTrace: ::core::option::Option<
-        unsafe extern "C" fn(
-            start: *mut f32,
-            end: *mut f32,
-            traceFlags: ::core::ffi::c_int,
-            ignore_pe: ::core::ffi::c_int,
-        ) -> pmtrace_t,
-    >,
-    pub PM_TraceLine: ::core::option::Option<
-        unsafe extern "C" fn(
-            start: *mut f32,
-            end: *mut f32,
-            flags: ::core::ffi::c_int,
-            usehulll: ::core::ffi::c_int,
-            ignore_pe: ::core::ffi::c_int,
-        ) -> *mut pmtrace_s,
-    >,
-    pub RandomLong: ::core::option::Option<
-        unsafe extern "C" fn(
-            lLow: ::core::ffi::c_int,
-            lHigh: ::core::ffi::c_int,
-        ) -> ::core::ffi::c_int,
-    >,
-    pub RandomFloat: ::core::option::Option<unsafe extern "C" fn(flLow: f32, flHigh: f32) -> f32>,
-    pub PM_GetModelType:
-        ::core::option::Option<unsafe extern "C" fn(mod_: *mut model_s) -> ::core::ffi::c_int>,
-    pub PM_GetModelBounds: ::core::option::Option<
-        unsafe extern "C" fn(mod_: *mut model_s, mins: *mut f32, maxs: *mut f32),
-    >,
-    pub PM_HullForBsp: ::core::option::Option<
-        unsafe extern "C" fn(pe: *mut physent_t, offset: *mut f32) -> *mut ::core::ffi::c_void,
-    >,
-    pub PM_TraceModel: ::core::option::Option<
-        unsafe extern "C" fn(
-            pEnt: *mut physent_t,
-            start: *mut f32,
-            end: *mut f32,
-            trace: *mut trace_t,
-        ) -> f32,
-    >,
-    pub COM_FileSize: ::core::option::Option<
-        unsafe extern "C" fn(filename: *const ::core::ffi::c_char) -> ::core::ffi::c_int,
-    >,
-    pub COM_LoadFile: ::core::option::Option<
-        unsafe extern "C" fn(
-            path: *const ::core::ffi::c_char,
-            usehunk: ::core::ffi::c_int,
-            pLength: *mut ::core::ffi::c_int,
-        ) -> *mut byte,
-    >,
-    pub COM_FreeFile:
-        ::core::option::Option<unsafe extern "C" fn(buffer: *mut ::core::ffi::c_void)>,
-    pub memfgets: ::core::option::Option<
-        unsafe extern "C" fn(
-            pMemFile: *mut byte,
-            fileSize: ::core::ffi::c_int,
-            pFilePos: *mut ::core::ffi::c_int,
-            pBuffer: *mut ::core::ffi::c_char,
-            bufferSize: ::core::ffi::c_int,
-        ) -> *mut ::core::ffi::c_char,
-    >,
-    pub runfuncs: qboolean,
-    pub PM_PlaySound: ::core::option::Option<
-        unsafe extern "C" fn(
-            channel: ::core::ffi::c_int,
-            sample: *const ::core::ffi::c_char,
-            volume: f32,
-            attenuation: f32,
-            fFlags: ::core::ffi::c_int,
-            pitch: ::core::ffi::c_int,
-        ),
-    >,
-    pub PM_TraceTexture: ::core::option::Option<
-        unsafe extern "C" fn(
-            ground: ::core::ffi::c_int,
-            vstart: *mut f32,
-            vend: *mut f32,
-        ) -> *const ::core::ffi::c_char,
-    >,
-    pub PM_PlaybackEventFull: ::core::option::Option<
-        unsafe extern "C" fn(
-            flags: ::core::ffi::c_int,
-            clientindex: ::core::ffi::c_int,
-            eventindex: ::core::ffi::c_ushort,
-            delay: f32,
-            origin: *mut f32,
-            angles: *mut f32,
-            fparam1: f32,
-            fparam2: f32,
-            iparam1: ::core::ffi::c_int,
-            iparam2: ::core::ffi::c_int,
-            bparam1: ::core::ffi::c_int,
-            bparam2: ::core::ffi::c_int,
-        ),
-    >,
-    pub PM_PlayerTraceEx: ::core::option::Option<
-        unsafe extern "C" fn(
-            start: *mut f32,
-            end: *mut f32,
-            traceFlags: ::core::ffi::c_int,
-            pfnIgnore: ::core::option::Option<
-                unsafe extern "C" fn(pe: *mut physent_t) -> ::core::ffi::c_int,
-            >,
-        ) -> pmtrace_t,
-    >,
-    pub PM_TestPlayerPositionEx: ::core::option::Option<
-        unsafe extern "C" fn(
-            pos: *mut f32,
-            ptrace: *mut pmtrace_t,
-            pfnIgnore: ::core::option::Option<
-                unsafe extern "C" fn(pe: *mut physent_t) -> ::core::ffi::c_int,
-            >,
-        ) -> ::core::ffi::c_int,
-    >,
-    pub PM_TraceLineEx: ::core::option::Option<
-        unsafe extern "C" fn(
-            start: *mut f32,
-            end: *mut f32,
-            flags: ::core::ffi::c_int,
-            usehulll: ::core::ffi::c_int,
-            pfnIgnore: ::core::option::Option<
-                unsafe extern "C" fn(pe: *mut physent_t) -> ::core::ffi::c_int,
-            >,
-        ) -> *mut pmtrace_s,
-    >,
-    pub PM_TraceSurface: ::core::option::Option<
-        unsafe extern "C" fn(
-            ground: ::core::ffi::c_int,
-            vstart: *mut f32,
-            vend: *mut f32,
-        ) -> *mut msurface_s,
-    >,
-}
-pub type playermove_t = playermove_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct grasshdr_s {

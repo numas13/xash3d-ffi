@@ -43,6 +43,7 @@ menu = [
 ]
 ## The render feature enables bindings to a render DLL
 render = [
+    "player-move",
     "studio-api",
     "render-api",
     "fs-api",
@@ -58,10 +59,13 @@ render-api = [
 net-api = []
 fs-api = []
 tri-api = []
-event-api = []
+event-api = [
+    "player-move",
+]
 efx-api = []
 ## The phys-api feature enables bindings to Physics API for a server DLL
 phys-api = [
+    "player-move",
     "tri-api",
     "render-api",
     "server",

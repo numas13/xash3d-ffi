@@ -63,6 +63,10 @@ generate "wrapper-common.h" "src/generated/common.rs" \
 # shared apis
 ##############################################################################
 
+generate "wrapper-player-move.h" "src/generated/player_move.rs" \
+    --no-recursive-allowlist \
+    --allowlist-file "xash3d-fwgs/pm_shared/pm_defs.h"
+
 generate "wrapper-net-api.h" "src/generated/net_api.rs" \
     --no-recursive-allowlist \
     --allowlist-file "xash3d-fwgs/common/net_api.h"
@@ -97,11 +101,6 @@ generate "wrapper-efx-api.h" "src/generated/efx_api.rs" \
 generate "wrapper-phys-api.h" "src/generated/phys_api.rs" \
     --no-recursive-allowlist \
     --allowlist-file "xash3d-fwgs/engine/physint.h"
-
-generate "wrapper-player-move.h" "src/generated/player_move.rs" \
-    --no-recursive-allowlist \
-    --allowlist-file "xash3d-fwgs/pm_shared/pm_movevars.h" \
-    --allowlist-file "xash3d-fwgs/pm_shared/pm_defs.h"
 
 ##############################################################################
 # dlls

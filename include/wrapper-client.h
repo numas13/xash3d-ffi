@@ -1,4 +1,5 @@
 #include "wrapper-common.h"
+#include "wrapper-player-move.h"
 #include "wrapper-studio-api.h"
 #include "wrapper-net-api.h"
 #include "wrapper-render-api.h"

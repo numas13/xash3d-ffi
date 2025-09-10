@@ -11,46 +11,6 @@ pub const PM_WORLD_ONLY: u32 = 8;
 pub const PM_CUSTOM_IGNORE: u32 = 16;
 pub const PM_TRACELINE_PHYSENTSONLY: u32 = 0;
 pub const PM_TRACELINE_ANYVISIBLE: u32 = 1;
-pub type movevars_t = movevars_s;
-#[repr(C)]
-pub struct movevars_s {
-    pub gravity: f32,
-    pub stopspeed: f32,
-    pub maxspeed: f32,
-    pub spectatormaxspeed: f32,
-    pub accelerate: f32,
-    pub airaccelerate: f32,
-    pub wateraccelerate: f32,
-    pub friction: f32,
-    pub edgefriction: f32,
-    pub waterfriction: f32,
-    pub entgravity: f32,
-    pub bounce: f32,
-    pub stepsize: f32,
-    pub maxvelocity: f32,
-    pub zmax: f32,
-    pub waveHeight: f32,
-    pub footsteps: qboolean,
-    pub skyName: [::core::ffi::c_char; 32usize],
-    pub rollangle: f32,
-    pub rollspeed: f32,
-    pub skycolor_r: f32,
-    pub skycolor_g: f32,
-    pub skycolor_b: f32,
-    pub skyvec_x: f32,
-    pub skyvec_y: f32,
-    pub skyvec_z: f32,
-    pub features: ::core::ffi::c_int,
-    pub fog_settings: ::core::ffi::c_int,
-    pub wateralpha: f32,
-    pub skydir_x: f32,
-    pub skydir_y: f32,
-    pub skydir_z: f32,
-    pub skyangle: f32,
-}
-extern "C" {
-    pub static mut movevars: movevars_t;
-}
 #[repr(C)]
 pub struct physent_s {
     pub name: [::core::ffi::c_char; 32usize],
