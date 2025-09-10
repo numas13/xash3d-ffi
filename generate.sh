@@ -39,6 +39,7 @@ function generate() {
         --blocklist-item "NUM_AMBIENTS" \
         --blocklist-type "mnode_s" \
         --blocklist-type "mnode_s__.*" \
+        --blocklist-type "float_bits_[st]" \
         --blocklist-var "boxpnt" \
         --blocklist-var "gEntityInterface" \
         --blocklist-var "gNewDLLFunctions" \

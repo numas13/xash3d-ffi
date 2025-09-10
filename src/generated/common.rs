@@ -461,13 +461,6 @@ pub type pfnCreateInterface_t = ::core::option::Option<
     ) -> *mut ::core::ffi::c_void,
 >;
 pub type mplane_t = mplane_s;
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub union float_bits_t {
-    pub fl: f32,
-    pub u: u32,
-    pub i: i32,
-}
 pub const kRenderNormal: _bindgen_ty_3 = 0;
 pub const kRenderTransColor: _bindgen_ty_3 = 1;
 pub const kRenderTransTexture: _bindgen_ty_3 = 2;
