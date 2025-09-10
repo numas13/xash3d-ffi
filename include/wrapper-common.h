@@ -14,8 +14,6 @@
 #include "common/particledef.h"
 #include "common/beamdef.h"
 #include "common/dlight.h"
-
-// FIXME: depends on byte ordering
 #include "common/netadr.h"
 
 #include "pm_shared/pm_movevars.h"

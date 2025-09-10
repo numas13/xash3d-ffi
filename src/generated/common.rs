@@ -1622,14 +1622,6 @@ pub const netadrtype_e_NA_IP6: netadrtype_e = 6;
 pub const netadrtype_e_NA_MULTICAST_IP6: netadrtype_e = 7;
 pub type netadrtype_e = ::core::ffi::c_uint;
 pub use self::netadrtype_e as netadrtype_t;
-#[repr(C, packed)]
-#[derive(Copy, Clone)]
-pub struct netadr_s {
-    pub type_: u16,
-    pub ip6_0: [u8; 2usize],
-    pub __bindgen_anon_1: netadr_s__bindgen_ty_1,
-    pub port: u16,
-}
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union netadr_s__bindgen_ty_1 {

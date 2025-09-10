@@ -100,6 +100,23 @@ impl mnode_s {
     }
 }
 
+#[repr(C, packed)]
+#[derive(Copy, Clone)]
+pub struct netadr_s {
+    // original comment about the endianness:
+    //   the reason we do this evil thing, is that when this struct contains IPv6
+    //   address the `type` is 2-byte wide, but when it doesn't `type` must 4-byte
+    //   wide _and_ ip6_0 must be zeroed, to keep it binary compatible.
+    #[cfg(target_endian = "little")]
+    pub type_: u16,
+    pub ip6_0: [u8; 2usize],
+    #[cfg(target_endian = "big")]
+    pub type_: u16,
+
+    pub __bindgen_anon_1: netadr_s__bindgen_ty_1,
+    pub port: u16,
+}
+
 // // engine/sprite.h
 // const_assert_size!(dsprite_t, 8);
 // const_assert_size!(dsprite_q1_t, 36);

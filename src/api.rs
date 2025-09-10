@@ -54,8 +54,8 @@ pub mod efx {
 pub mod phys {
     use crate::common::*;
 
-    use crate::api::tri::*;
     use crate::api::render::*;
+    use crate::api::tri::*;
 
     use crate::server::SAVERESTOREDATA;
 
