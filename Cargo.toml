@@ -9,8 +9,39 @@ edition = "2021"
 authors = ["Denis Drakhnia <numas13@gmail.com>"]
 
 [features]
+default = ["all"]
 std = []
 libm = ["dep:libm"]
+
+# shared apis
+studio-api = []
+render-api = []
+net-api = []
+fs-api = []
+tri-api = []
+
+# dlls
+all = ["client", "server", "menu", "render"]
+player-move = []
+client = [
+    "player-move",
+    "studio-api",
+    "render-api",
+    "net-api",
+    "tri-api",
+]
+server = [
+    "player-move",
+]
+menu = [
+    "net-api",
+]
+render = [
+    "studio-api",
+    "render-api",
+    "fs-api",
+    "tri-api",
+]
 
 [dependencies]
 libc = { version = "0.2", default-features = false }

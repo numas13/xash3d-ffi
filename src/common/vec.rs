@@ -1,10 +1,10 @@
 use core::ops;
 
-use crate::{vec2_t, vec3_t, vec4_t};
+use crate::common::{self, vec2_t, vec3_t, vec4_t};
 
-const PITCH: usize = crate::PITCH as usize;
-const YAW: usize = crate::YAW as usize;
-const ROLL: usize = crate::ROLL as usize;
+const PITCH: usize = common::PITCH as usize;
+const YAW: usize = common::YAW as usize;
+const ROLL: usize = common::ROLL as usize;
 
 #[cfg(all(not(feature = "std"), feature = "libm"))]
 fn sqrtf(f: f32) -> f32 {
