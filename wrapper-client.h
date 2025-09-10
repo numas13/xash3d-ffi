@@ -4,10 +4,10 @@
 #include "wrapper-render-api.h"
 #include "wrapper-tri-api.h"
 #include "wrapper-event-api.h"
+#include "wrapper-efx-api.h"
 
 #include "common/ivoicetweak.h"
 #include "common/demo_api.h"
-#include "common/r_efx.h"
 
 #include "engine/cdll_int.h"
 #include "engine/cdll_exp.h"

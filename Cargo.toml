@@ -20,6 +20,7 @@ net-api = []
 fs-api = []
 tri-api = []
 event-api = []
+efx-api = []
 
 # dlls
 all = ["client", "server", "menu", "render"]
@@ -31,6 +32,7 @@ client = [
     "net-api",
     "tri-api",
     "event-api",
+    "efx-api",
 ]
 server = [
     "player-move",

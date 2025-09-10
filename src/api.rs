@@ -40,3 +40,10 @@ pub mod event {
 
     include!("generated/event_api.rs");
 }
+
+#[cfg(feature = "efx-api")]
+pub mod efx {
+    use crate::common::*;
+
+    include!("generated/efx_api.rs");
+}
