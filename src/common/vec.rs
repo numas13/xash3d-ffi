@@ -75,27 +75,27 @@ macro_rules! impl_vec {
                 self.0[$i] = $f;
             })+
 
-            pub const fn sum(&self) -> f32 {
+            pub fn sum(&self) -> f32 {
                 let mut acc = 0.0;
                 $(acc += self.0[$i];)*
                 acc
             }
 
-            const fn mul(self, other: $vec) -> $vec {
+            fn mul(self, other: $vec) -> $vec {
                 $(let $f = self.0[$i] * other.0[$i];)+
                 Self([$($f),+])
             }
 
-            pub const fn dot_product(self, other: $vec) -> f32 {
+            pub fn dot_product(self, other: $vec) -> f32 {
                 (self.mul(other)).sum()
             }
 
-            pub const fn average(self, other: $vec) -> $vec {
+            pub fn average(self, other: $vec) -> $vec {
                 $(let $f = (self.0[$i] + other.0[$i]) * 0.5;)+
                 Self([$($f),+])
             }
 
-            pub const fn to_radians(self) -> $vec {
+            pub fn to_radians(self) -> $vec {
                 $(let $f = self.0[$i].to_radians();)+
                 Self([$($f),+])
             }
