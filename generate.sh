@@ -12,6 +12,7 @@ MSRV=1.64
 
 CFLAGS=""
 CFLAGS+=" -target $target"
+CFLAGS+=" -Iinclude"
 CFLAGS+=" -Ixash3d-fwgs"
 CFLAGS+=" -Ixash3d-fwgs/common"
 CFLAGS+=" -Ixash3d-fwgs/public"
@@ -24,7 +25,7 @@ function generate() {
     output="$2"
     shift 2
     bindgen \
-        "$wrapper_h" \
+        "include/$wrapper_h" \
         --rust-target $MSRV \
         --use-core \
         --generate-cstr \
