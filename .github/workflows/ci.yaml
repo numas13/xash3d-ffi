@@ -9,6 +9,7 @@ on:
       - 'Cargo.*'
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
