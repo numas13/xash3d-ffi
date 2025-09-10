@@ -49,3 +49,23 @@ pub mod efx {
 
     include!("generated/efx_api.rs");
 }
+
+#[cfg(feature = "phys-api")]
+pub mod phys {
+    use crate::common::*;
+
+    use crate::api::tri::*;
+    use crate::api::render::*;
+
+    use crate::server::SAVERESTOREDATA;
+
+    include!("generated/phys_api.rs");
+
+    pub type PHYSICAPI = Option<
+        unsafe extern "C" fn(
+            version: core::ffi::c_int,
+            eng_funcs: *mut server_physics_api_t,
+            dll_funcs: *mut physics_interface_t,
+        ) -> core::ffi::c_int,
+    >;
+}

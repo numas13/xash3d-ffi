@@ -52,12 +52,20 @@ render = [
 #! ### Bindings to shared APIs
 
 studio-api = []
-render-api = []
+render-api = [
+    "studio-api",
+]
 net-api = []
 fs-api = []
 tri-api = []
 event-api = []
 efx-api = []
+## The phys-api feature enables bindings to Physics API for a server DLL
+phys-api = [
+    "tri-api",
+    "render-api",
+    "server",
+]
 
 [package.metadata.docs.rs]
 all-features = true
