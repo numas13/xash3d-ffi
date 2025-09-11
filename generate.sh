@@ -34,6 +34,7 @@ function generate() {
         --no-doc-comments \
         --no-layout-tests \
         --use-array-pointers-in-arguments \
+        --default-macro-constant-type signed \
         --blocklist-file "/usr/.*" \
         --blocklist-file "xash3d-fwgs/public/build.h" \
         --blocklist-item "NUM_AMBIENTS" \
