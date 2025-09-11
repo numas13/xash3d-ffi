@@ -123,6 +123,9 @@ pub const ATTN_NORM: f32 = 0.8;
 pub const ATTN_IDLE: f32 = 2.0;
 pub const ATTN_STATIC: f32 = 1.25;
 
+// not defined in the engine headers
+pub const EFLAG_FLESH_SOUND: c_int = 2;
+
 // // engine/sprite.h
 // const_assert_size!(dsprite_t, 8);
 // const_assert_size!(dsprite_q1_t, 36);
