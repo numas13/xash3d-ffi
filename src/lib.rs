@@ -15,6 +15,11 @@ mod macros;
 
 pub mod common;
 
+pub mod keys {
+    //! Key numbers definitions.
+    include!("generated/keys.rs");
+}
+
 pub mod api;
 
 #[cfg(feature = "player-move")]
