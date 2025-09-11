@@ -247,7 +247,6 @@ pub const CHAN_STREAM: u32 = 5;
 pub const CHAN_STATIC: u32 = 6;
 pub const CHAN_NETWORKVOICE_BASE: u32 = 7;
 pub const CHAN_NETWORKVOICE_END: u32 = 500;
-pub const ATTN_NONE: u32 = 0;
 pub const PITCH_NORM: u32 = 100;
 pub const PITCH_LOW: u32 = 95;
 pub const PITCH_HIGH: u32 = 120;

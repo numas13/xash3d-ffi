@@ -117,6 +117,12 @@ pub struct netadr_s {
     pub port: u16,
 }
 
+// not generated because of type cast
+pub const ATTN_NONE: f32 = 0.0;
+pub const ATTN_NORM: f32 = 0.8;
+pub const ATTN_IDLE: f32 = 2.0;
+pub const ATTN_STATIC: f32 = 1.25;
+
 // // engine/sprite.h
 // const_assert_size!(dsprite_t, 8);
 // const_assert_size!(dsprite_q1_t, 36);

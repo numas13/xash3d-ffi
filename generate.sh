@@ -57,7 +57,8 @@ function generate() {
 generate "wrapper-common.h" "src/generated/common.rs" \
     --allowlist-file "xash3d-fwgs/.*" \
     --blocklist-type "netadr_s" \
-    --blocklist-type "mstudio.*"
+    --blocklist-type "mstudio.*" \
+    --blocklist-var "ATTN_NONE"
 
 generate "wrapper-keys.h" "src/generated/keys.rs" \
     --allowlist-file "xash3d-fwgs/.*"
