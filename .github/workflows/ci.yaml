@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'master'
+    tags-ignore:
+      - 'v[0-9]+.**'
     paths:
       - 'src/**.rs'
       - 'Cargo.*'
@@ -19,12 +21,18 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [1.64, stable]
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - run: cargo check --all-features
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - run: cargo check --all-targets --all-features
 
-  check_style:
+  check-style:
     name: Check style
     runs-on: ubuntu-latest
     steps:
@@ -35,16 +43,6 @@ jobs:
       - name: Rustfmt Check
         uses: actions-rust-lang/rustfmt@v1
 
-  check-msrv:
-    name: Check MSRV
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions-rust-lang/setup-rust-toolchain@v1
-        with:
-          toolchain: "1.64.0"
-      - run: cargo check --all-features
-
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
@@ -53,4 +51,4 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           components: clippy
-      - run: cargo clippy --all-features
+      - run: cargo clippy --all-targets --all-features
