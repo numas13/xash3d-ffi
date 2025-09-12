@@ -4,6 +4,7 @@
 #include "common/cvardef.h"
 #include "common/con_nprint.h"
 #include "common/usercmd.h"
+#include "common/entity_types.h"
 #include "common/cl_entity.h"
 #include "common/com_model.h"
 #include "common/kbutton.h"
