@@ -1,5 +1,4 @@
-//! Raw FFI bindings to [Xash3D FWGS engine](https://github.com/FWGS/xash3d-fwgs).
-
+#![doc = include_str!("../README.md")]
 #![no_std]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 #![allow(non_upper_case_globals)]
