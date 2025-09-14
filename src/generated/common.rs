@@ -405,6 +405,297 @@ pub const MAX_MOVIES: i32 = 8;
 pub const MAX_CDTRACKS: i32 = 32;
 pub const MAX_CLIENT_SPRITES: i32 = 512;
 pub const MAX_REQUESTS: i32 = 64;
+pub const PROTOCOL_VERSION: i32 = 49;
+pub const svc_bad: i32 = 0;
+pub const svc_nop: i32 = 1;
+pub const svc_disconnect: i32 = 2;
+pub const svc_event: i32 = 3;
+pub const svc_changing: i32 = 4;
+pub const svc_setview: i32 = 5;
+pub const svc_sound: i32 = 6;
+pub const svc_time: i32 = 7;
+pub const svc_print: i32 = 8;
+pub const svc_stufftext: i32 = 9;
+pub const svc_setangle: i32 = 10;
+pub const svc_serverdata: i32 = 11;
+pub const svc_lightstyle: i32 = 12;
+pub const svc_updateuserinfo: i32 = 13;
+pub const svc_deltatable: i32 = 14;
+pub const svc_clientdata: i32 = 15;
+pub const svc_resource: i32 = 16;
+pub const svc_pings: i32 = 17;
+pub const svc_particle: i32 = 18;
+pub const svc_restoresound: i32 = 19;
+pub const svc_spawnstatic: i32 = 20;
+pub const svc_event_reliable: i32 = 21;
+pub const svc_spawnbaseline: i32 = 22;
+pub const svc_temp_entity: i32 = 23;
+pub const svc_setpause: i32 = 24;
+pub const svc_signonnum: i32 = 25;
+pub const svc_centerprint: i32 = 26;
+pub const svc_intermission: i32 = 30;
+pub const svc_finale: i32 = 31;
+pub const svc_cdtrack: i32 = 32;
+pub const svc_restore: i32 = 33;
+pub const svc_cutscene: i32 = 34;
+pub const svc_weaponanim: i32 = 35;
+pub const svc_bspdecal: i32 = 36;
+pub const svc_roomtype: i32 = 37;
+pub const svc_addangle: i32 = 38;
+pub const svc_usermessage: i32 = 39;
+pub const svc_packetentities: i32 = 40;
+pub const svc_deltapacketentities: i32 = 41;
+pub const svc_choke: i32 = 42;
+pub const svc_resourcelist: i32 = 43;
+pub const svc_deltamovevars: i32 = 44;
+pub const svc_resourcerequest: i32 = 45;
+pub const svc_customization: i32 = 46;
+pub const svc_crosshairangle: i32 = 47;
+pub const svc_soundfade: i32 = 48;
+pub const svc_filetxferfailed: i32 = 49;
+pub const svc_hltv: i32 = 50;
+pub const svc_director: i32 = 51;
+pub const svc_voiceinit: i32 = 52;
+pub const svc_voicedata: i32 = 53;
+pub const svc_resourcelocation: i32 = 56;
+pub const svc_querycvarvalue: i32 = 57;
+pub const svc_querycvarvalue2: i32 = 58;
+pub const svc_exec: i32 = 59;
+pub const svc_lastmsg: i32 = 59;
+pub const clc_bad: i32 = 0;
+pub const clc_nop: i32 = 1;
+pub const clc_move: i32 = 2;
+pub const clc_stringcmd: i32 = 3;
+pub const clc_delta: i32 = 4;
+pub const clc_resourcelist: i32 = 5;
+pub const clc_fileconsistency: i32 = 7;
+pub const clc_voicedata: i32 = 8;
+pub const clc_requestcvarvalue: i32 = 9;
+pub const clc_requestcvarvalue2: i32 = 10;
+pub const clc_lastmsg: i32 = 11;
+pub const MAX_VISIBLE_PACKET_BITS: i32 = 11;
+pub const MAX_VISIBLE_PACKET: i32 = 2048;
+pub const MAX_VISIBLE_PACKET_VIS_BYTES: i32 = 256;
+pub const MAX_CLIENT_BITS: i32 = 5;
+pub const MAX_CLIENTS: i32 = 32;
+pub const MAX_WEAPON_BITS: i32 = 6;
+pub const MAX_WEAPONS: i32 = 64;
+pub const MAX_EVENT_BITS: i32 = 10;
+pub const MAX_EVENTS: i32 = 1024;
+pub const MAX_MODEL_BITS: i32 = 12;
+pub const MAX_MODELS: i32 = 4096;
+pub const MAX_SOUND_BITS: i32 = 11;
+pub const MAX_SOUNDS: i32 = 2048;
+pub const MAX_SOUNDS_NONSENTENCE: i32 = 2048;
+pub const MAX_ENTITY_BITS: i32 = 13;
+pub const MAX_EDICTS: i32 = 8192;
+pub const MAX_EDICTS_BYTES: i32 = 1024;
+pub const LAST_EDICT: i32 = 8191;
+pub const MIN_EDICTS: i32 = 64;
+pub const MAX_CUSTOM_BITS: i32 = 10;
+pub const MAX_CUSTOM: i32 = 1024;
+pub const MAX_USER_MESSAGES: i32 = 197;
+pub const MAX_DLIGHTS: i32 = 32;
+pub const MAX_ELIGHTS: i32 = 128;
+pub const MAX_LIGHTSTYLES: i32 = 256;
+pub const MAX_RENDER_DECALS: i32 = 4096;
+pub const MAX_SND_FLAGS_BITS: i32 = 14;
+pub const MAX_SND_CHAN_BITS: i32 = 4;
+pub const SND_VOLUME: i32 = 1;
+pub const SND_ATTENUATION: i32 = 2;
+pub const SND_SEQUENCE: i32 = 4;
+pub const SND_PITCH: i32 = 8;
+pub const SND_SENTENCE: i32 = 16;
+pub const SND_STOP: i32 = 32;
+pub const SND_CHANGE_VOL: i32 = 64;
+pub const SND_CHANGE_PITCH: i32 = 128;
+pub const SND_SPAWNING: i32 = 256;
+pub const SND_LOCALSOUND: i32 = 512;
+pub const SND_STOP_LOOPING: i32 = 1024;
+pub const SND_FILTER_CLIENT: i32 = 2048;
+pub const SND_RESTORE_POSITION: i32 = 4096;
+pub const FDECAL_PERMANENT: i32 = 1;
+pub const FDECAL_USE_LANDMARK: i32 = 2;
+pub const FDECAL_CUSTOM: i32 = 4;
+pub const FDECAL_DONTSAVE: i32 = 32;
+pub const FDECAL_STUDIO: i32 = 64;
+pub const FDECAL_LOCAL_SPACE: i32 = 128;
+pub const GAME_SINGLEPLAYER: i32 = 0;
+pub const GAME_DEATHMATCH: i32 = 1;
+pub const GAME_COOP: i32 = 2;
+pub const GAME_TEAMPLAY: i32 = 4;
+pub const NUM_BACKUP_COMMAND_BITS: i32 = 4;
+pub const MAX_TOTAL_CMDS: i32 = 32;
+pub const MAX_RESOURCES: i32 = 8192;
+pub const MAX_RESOURCE_BITS: i32 = 13;
+pub const FRAGMENT_MIN_SIZE: i32 = 508;
+pub const FRAGMENT_DEFAULT_SIZE: i32 = 1200;
+pub const FRAGMENT_MAX_SIZE: i32 = 64000;
+pub const FRAGMENT_LOCAL_SIZE: i32 = 64000;
+pub const PROTOCOL_VERSION_QUAKE: i32 = 15;
+pub const svc_updatestat: i32 = 3;
+pub const svc_version: i32 = 4;
+pub const svc_updatename: i32 = 13;
+pub const svc_updatefrags: i32 = 14;
+pub const svc_stopsound: i32 = 16;
+pub const svc_updatecolors: i32 = 17;
+pub const svc_damage: i32 = 19;
+pub const svc_spawnbinary: i32 = 21;
+pub const svc_killedmonster: i32 = 27;
+pub const svc_foundsecret: i32 = 28;
+pub const svc_spawnstaticsound: i32 = 29;
+pub const svc_sellscreen: i32 = 33;
+pub const svc_showlmp: i32 = 35;
+pub const svc_hidelmp: i32 = 36;
+pub const svc_skybox: i32 = 37;
+pub const svc_skyboxsize: i32 = 50;
+pub const svc_fog: i32 = 51;
+pub const U_MOREBITS: i32 = 1;
+pub const U_ORIGIN1: i32 = 2;
+pub const U_ORIGIN2: i32 = 4;
+pub const U_ORIGIN3: i32 = 8;
+pub const U_ANGLE2: i32 = 16;
+pub const U_NOLERP: i32 = 32;
+pub const U_FRAME: i32 = 64;
+pub const U_SIGNAL: i32 = 128;
+pub const U_ANGLE1: i32 = 256;
+pub const U_ANGLE3: i32 = 512;
+pub const U_MODEL: i32 = 1024;
+pub const U_COLORMAP: i32 = 2048;
+pub const U_SKIN: i32 = 4096;
+pub const U_EFFECTS: i32 = 8192;
+pub const U_LONGENTITY: i32 = 16384;
+pub const U_TRANS: i32 = 32768;
+pub const SU_VIEWHEIGHT: i32 = 1;
+pub const SU_IDEALPITCH: i32 = 2;
+pub const SU_PUNCH1: i32 = 4;
+pub const SU_PUNCH2: i32 = 8;
+pub const SU_PUNCH3: i32 = 16;
+pub const SU_VELOCITY1: i32 = 32;
+pub const SU_VELOCITY2: i32 = 64;
+pub const SU_VELOCITY3: i32 = 128;
+pub const SU_ITEMS: i32 = 512;
+pub const SU_ONGROUND: i32 = 1024;
+pub const SU_INWATER: i32 = 2048;
+pub const SU_WEAPONFRAME: i32 = 4096;
+pub const SU_ARMOR: i32 = 8192;
+pub const SU_WEAPON: i32 = 16384;
+pub const NET_EXT_SPLITSIZE: i32 = 1;
+pub const PROTOCOL_LEGACY_VERSION: i32 = 48;
+pub const svc_legacy_modelindex: i32 = 31;
+pub const svc_legacy_soundindex: i32 = 28;
+pub const svc_legacy_eventindex: i32 = 34;
+pub const svc_legacy_ambientsound: i32 = 29;
+pub const svc_legacy_chokecount: i32 = 42;
+pub const svc_legacy_event: i32 = 27;
+pub const svc_legacy_changing: i32 = 3;
+pub const clc_legacy_userinfo: i32 = 6;
+pub const SND_LEGACY_LARGE_INDEX: i32 = 4;
+pub const MAX_LEGACY_ENTITY_BITS: i32 = 12;
+pub const MAX_LEGACY_WEAPON_BITS: i32 = 5;
+pub const MAX_LEGACY_MODEL_BITS: i32 = 11;
+pub const MAX_LEGACY_TOTAL_CMDS: i32 = 16;
+pub const MAX_LEGACY_BACKUP_CMDS: i32 = 12;
+pub const MAX_LEGACY_EDICTS: i32 = 4096;
+pub const MIN_LEGACY_EDICTS: i32 = 30;
+pub const MS_SCAN_REQUEST: &[u8; 13] = b"1\xFF0.0.0.0:0\0\0";
+pub const PROTOCOL_GOLDSRC_VERSION: i32 = 48;
+pub const svc_goldsrc_version: i32 = 4;
+pub const svc_goldsrc_stopsound: i32 = 16;
+pub const svc_goldsrc_damage: i32 = 19;
+pub const svc_goldsrc_killedmonster: i32 = 27;
+pub const svc_goldsrc_foundsecret: i32 = 28;
+pub const svc_goldsrc_spawnstaticsound: i32 = 29;
+pub const svc_goldsrc_decalname: i32 = 36;
+pub const svc_goldsrc_sendextrainfo: i32 = 54;
+pub const svc_goldsrc_timescale: i32 = 55;
+pub const clc_goldsrc_hltv: i32 = 9;
+pub const clc_goldsrc_requestcvarvalue: i32 = 10;
+pub const clc_goldsrc_requestcvarvalue2: i32 = 11;
+pub const clc_goldsrc_lastmsg: i32 = 11;
+pub const MAX_GOLDSRC_BACKUP_CMDS: i32 = 8;
+pub const MAX_GOLDSRC_TOTAL_CMDS: i32 = 16;
+pub const MAX_GOLDSRC_EXTENDED_TOTAL_CMDS: i32 = 62;
+pub const MAX_GOLDSRC_MODEL_BITS: i32 = 10;
+pub const MAX_GOLDSRC_RESOURCE_BITS: i32 = 12;
+pub const MAX_GOLDSRC_ENTITY_BITS: i32 = 11;
+#[allow(unsafe_code)]
+pub const A2A_PING: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"ping\0") };
+#[allow(unsafe_code)]
+pub const A2A_ACK: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"ack\0") };
+#[allow(unsafe_code)]
+pub const A2A_INFO: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"info\0") };
+#[allow(unsafe_code)]
+pub const A2A_NETINFO: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"netinfo\0") };
+#[allow(unsafe_code)]
+pub const A2A_GOLDSRC_PING: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"i\0") };
+#[allow(unsafe_code)]
+pub const A2A_GOLDSRC_ACK: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"j\0") };
+#[allow(unsafe_code)]
+pub const A2S_GOLDSRC_INFO: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"TSource Engine Query\0") };
+pub const A2S_GOLDSRC_RULES: u8 = 86u8;
+pub const A2S_GOLDSRC_PLAYERS: u8 = 85u8;
+pub const S2A_GOLDSRC_INFO: u8 = 73u8;
+pub const S2A_GOLDSRC_RULES: u8 = 69u8;
+pub const S2A_GOLDSRC_PLAYERS: u8 = 68u8;
+#[allow(unsafe_code)]
+pub const M2S_CHALLENGE: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"s\0") };
+#[allow(unsafe_code)]
+pub const M2S_NAT_CONNECT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"c\0") };
+#[allow(unsafe_code)]
+pub const S2M_INFO: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"0\n\0") };
+#[allow(unsafe_code)]
+pub const C2S_BANDWIDTHTEST: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"bandwidth\0") };
+#[allow(unsafe_code)]
+pub const C2S_GETCHALLENGE: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"getchallenge\0") };
+#[allow(unsafe_code)]
+pub const C2S_CONNECT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"connect\0") };
+#[allow(unsafe_code)]
+pub const C2S_RCON: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"rcon\0") };
+#[allow(unsafe_code)]
+pub const S2C_BANDWIDTHTEST: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"testpacket\0") };
+#[allow(unsafe_code)]
+pub const S2C_CHALLENGE: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"challenge\0") };
+#[allow(unsafe_code)]
+pub const S2C_CONNECTION: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"client_connect\0") };
+#[allow(unsafe_code)]
+pub const S2C_ERRORMSG: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"errormsg\0") };
+#[allow(unsafe_code)]
+pub const S2C_REJECT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"disconnect\0") };
+pub const S2C_GOLDSRC_REJECT_BADPASSWORD: u8 = 56u8;
+pub const S2C_GOLDSRC_REJECT: u8 = 57u8;
+#[allow(unsafe_code)]
+pub const S2C_GOLDSRC_CHALLENGE: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"A00000000\0") };
+#[allow(unsafe_code)]
+pub const S2C_GOLDSRC_CONNECTION: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"B\0") };
+#[allow(unsafe_code)]
+pub const A2C_PRINT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"print\0") };
+pub const A2C_GOLDSRC_PRINT: u8 = 108u8;
+#[allow(unsafe_code)]
+pub const M2A_SERVERSLIST: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"f\0") };
 pub const RF_DRAW_WORLD: i32 = 1;
 pub const RF_DRAW_CUBEMAP: i32 = 2;
 pub const RF_DRAW_OVERVIEW: i32 = 4;

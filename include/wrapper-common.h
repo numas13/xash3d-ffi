@@ -10,6 +10,8 @@
 #include "common/kbutton.h"
 #include "common/screenfade.h"
 #include "common/pmtrace.h"
+// TODO: common/port.h
+#include "common/protocol.h"
 
 #include "pm_shared/pm_movevars.h"
 #include "common/ref_params.h"
