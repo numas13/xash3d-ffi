@@ -8,6 +8,7 @@ to minimize build dependencies.
 
 * `std` - links to the standard library.
 * `libm` - add additional methods to vectors in no-std environments.
+* `glam` - use vector types from this crate.
 
 ### Features to enable bindings for DLLs
 
@@ -37,7 +38,7 @@ The minimum supported Rust toolchain version is currently Rust 1.64.
 To manually generate bindings run `generate.sh [target]`. The default target is
 `i686-unknown-linux-gnu`.
 
-```
+```ignore
 cd xash3d-ffi
 ./generate.sh
 ```

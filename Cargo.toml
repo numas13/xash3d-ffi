@@ -15,9 +15,11 @@ exclude = ["xash3d-fwgs"]
 default = ["all"]
 
 ## The std feature enables using of Rust's standard library
-std = []
+std = ["glam?/std"]
 ## The libm feature enables additional methods for vectors in no-std environments
-libm = ["dep:libm"]
+libm = ["dep:libm", "glam?/libm"]
+## The glam feature enables using glam crate for vec2_t, vec3_t and vec4_t
+glam = ["dep:glam"]
 
 #! ### Bindings for DLLs
 
@@ -79,3 +81,4 @@ all-features = true
 [dependencies]
 libc = { version = "0.2", default-features = false }
 libm = { version = "0.2", optional = true }
+glam = { version = "0.30.8", default-features = false, optional = true }

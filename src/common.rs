@@ -2,13 +2,18 @@
 
 #![allow(clippy::missing_safety_doc)]
 
+#[cfg(not(feature = "glam"))]
 mod vec;
 
 use core::ffi::{c_int, c_ushort};
 
 pub use libc::{off_t, FILE};
 
+#[cfg(not(feature = "glam"))]
 pub use self::vec::{vec2_t, vec3_t, vec4_t};
+
+#[cfg(feature = "glam")]
+pub use glam::{Vec2 as vec2_t, Vec3 as vec3_t, Vec4 as vec4_t};
 
 pub type uint = core::ffi::c_uint;
 pub type va_list = core::ffi::c_void;
