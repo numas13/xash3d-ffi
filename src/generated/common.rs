@@ -30,14 +30,24 @@ impl<T> ::core::fmt::Debug for __IncompleteArrayField<T> {
         fmt.write_str("__IncompleteArrayField")
     }
 }
+#[allow(unsafe_code)]
+pub const OS_LIB_PREFIX: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"lib\0") };
+#[allow(unsafe_code)]
+pub const OS_LIB_EXT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"so\0") };
+#[allow(unsafe_code)]
+pub const OPEN_COMMAND: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"xdg-open\0") };
+pub const XASH_LOW_MEMORY: i32 = 0;
 pub const MAX_STRING: i32 = 256;
 pub const MAX_VA_STRING: i32 = 1024;
 pub const MAX_SYSPATH: i32 = 1024;
-pub const MAX_MODS: i32 = 512;
-pub const MAX_QPATH: i32 = 64;
 pub const MAX_OSPATH: i32 = 260;
 pub const CS_SIZE: i32 = 64;
 pub const CS_TIME: i32 = 16;
+pub const MAX_QPATH: i32 = 64;
+pub const MAX_MODS: i32 = 512;
 pub const PITCH: i32 = 0;
 pub const YAW: i32 = 1;
 pub const ROLL: i32 = 2;
@@ -598,7 +608,6 @@ pub const MAX_LEGACY_TOTAL_CMDS: i32 = 16;
 pub const MAX_LEGACY_BACKUP_CMDS: i32 = 12;
 pub const MAX_LEGACY_EDICTS: i32 = 4096;
 pub const MIN_LEGACY_EDICTS: i32 = 30;
-pub const MS_SCAN_REQUEST: &[u8; 13] = b"1\xFF0.0.0.0:0\0\0";
 pub const PROTOCOL_GOLDSRC_VERSION: i32 = 48;
 pub const svc_goldsrc_version: i32 = 4;
 pub const svc_goldsrc_stopsound: i32 = 16;
@@ -652,8 +661,14 @@ pub const M2S_CHALLENGE: &::core::ffi::CStr =
 pub const M2S_NAT_CONNECT: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"c\0") };
 #[allow(unsafe_code)]
+pub const S2M_HEARTBEAT: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"q\xFF\0") };
+#[allow(unsafe_code)]
 pub const S2M_INFO: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"0\n\0") };
+#[allow(unsafe_code)]
+pub const S2M_SHUTDOWN: &::core::ffi::CStr =
+    unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"b\n\0") };
 #[allow(unsafe_code)]
 pub const C2S_BANDWIDTHTEST: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"bandwidth\0") };
@@ -693,6 +708,7 @@ pub const S2C_GOLDSRC_CONNECTION: &::core::ffi::CStr =
 pub const A2C_PRINT: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"print\0") };
 pub const A2C_GOLDSRC_PRINT: u8 = 108u8;
+pub const A2M_SCAN_REQUEST: &[u8; 13] = b"1\xFF0.0.0.0:0\0\0";
 #[allow(unsafe_code)]
 pub const M2A_SERVERSLIST: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"f\0") };
@@ -713,6 +729,14 @@ pub const FBEAM_ENDVISIBLE: i32 = 536870912;
 pub const FBEAM_ISACTIVE: i32 = 1073741824;
 pub const FBEAM_FOREVER: i64 = 2147483648;
 pub const PORT_ANY: i32 = -1;
+pub type HINSTANCE = *mut ::core::ffi::c_void;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagPOINT {
+    pub x: ::core::ffi::c_int,
+    pub y: ::core::ffi::c_int,
+}
+pub type POINT = tagPOINT;
 pub type byte = u8;
 pub type vec_t = f32;
 #[repr(transparent)]
@@ -730,11 +754,7 @@ pub type rgb_t = [byte; 3usize];
 pub type matrix3x4 = [[vec_t; 4usize]; 3usize];
 pub type matrix4x4 = [[vec_t; 4usize]; 4usize];
 pub type poolhandle_t = u32;
-pub const false_: _bindgen_ty_2 = 0;
-pub const true_: _bindgen_ty_2 = 1;
-pub type _bindgen_ty_2 = ::core::ffi::c_uint;
-pub type qboolean = ::core::ffi::c_int;
-pub type dword = ::core::ffi::c_uint;
+pub type dword = u32;
 pub type string = [::core::ffi::c_char; 256usize];
 pub type fs_offset_t = off_t;
 pub type fs_size_t = isize;
@@ -744,37 +764,41 @@ pub type pfnCreateInterface_t = ::core::option::Option<
         arg2: *mut ::core::ffi::c_int,
     ) -> *mut ::core::ffi::c_void,
 >;
+pub const false_: _bindgen_ty_5 = 0;
+pub const true_: _bindgen_ty_5 = 1;
+pub type _bindgen_ty_5 = ::core::ffi::c_uint;
+pub type qboolean = ::core::ffi::c_int;
 pub type mplane_t = mplane_s;
-pub const kRenderNormal: _bindgen_ty_3 = 0;
-pub const kRenderTransColor: _bindgen_ty_3 = 1;
-pub const kRenderTransTexture: _bindgen_ty_3 = 2;
-pub const kRenderGlow: _bindgen_ty_3 = 3;
-pub const kRenderTransAlpha: _bindgen_ty_3 = 4;
-pub const kRenderTransAdd: _bindgen_ty_3 = 5;
-pub type _bindgen_ty_3 = ::core::ffi::c_uint;
-pub const kRenderFxNone: _bindgen_ty_4 = 0;
-pub const kRenderFxPulseSlow: _bindgen_ty_4 = 1;
-pub const kRenderFxPulseFast: _bindgen_ty_4 = 2;
-pub const kRenderFxPulseSlowWide: _bindgen_ty_4 = 3;
-pub const kRenderFxPulseFastWide: _bindgen_ty_4 = 4;
-pub const kRenderFxFadeSlow: _bindgen_ty_4 = 5;
-pub const kRenderFxFadeFast: _bindgen_ty_4 = 6;
-pub const kRenderFxSolidSlow: _bindgen_ty_4 = 7;
-pub const kRenderFxSolidFast: _bindgen_ty_4 = 8;
-pub const kRenderFxStrobeSlow: _bindgen_ty_4 = 9;
-pub const kRenderFxStrobeFast: _bindgen_ty_4 = 10;
-pub const kRenderFxStrobeFaster: _bindgen_ty_4 = 11;
-pub const kRenderFxFlickerSlow: _bindgen_ty_4 = 12;
-pub const kRenderFxFlickerFast: _bindgen_ty_4 = 13;
-pub const kRenderFxNoDissipation: _bindgen_ty_4 = 14;
-pub const kRenderFxDistort: _bindgen_ty_4 = 15;
-pub const kRenderFxHologram: _bindgen_ty_4 = 16;
-pub const kRenderFxDeadPlayer: _bindgen_ty_4 = 17;
-pub const kRenderFxExplode: _bindgen_ty_4 = 18;
-pub const kRenderFxGlowShell: _bindgen_ty_4 = 19;
-pub const kRenderFxClampMinScale: _bindgen_ty_4 = 20;
-pub const kRenderFxLightMultiplier: _bindgen_ty_4 = 21;
-pub type _bindgen_ty_4 = ::core::ffi::c_uint;
+pub const kRenderNormal: _bindgen_ty_6 = 0;
+pub const kRenderTransColor: _bindgen_ty_6 = 1;
+pub const kRenderTransTexture: _bindgen_ty_6 = 2;
+pub const kRenderGlow: _bindgen_ty_6 = 3;
+pub const kRenderTransAlpha: _bindgen_ty_6 = 4;
+pub const kRenderTransAdd: _bindgen_ty_6 = 5;
+pub type _bindgen_ty_6 = ::core::ffi::c_uint;
+pub const kRenderFxNone: _bindgen_ty_7 = 0;
+pub const kRenderFxPulseSlow: _bindgen_ty_7 = 1;
+pub const kRenderFxPulseFast: _bindgen_ty_7 = 2;
+pub const kRenderFxPulseSlowWide: _bindgen_ty_7 = 3;
+pub const kRenderFxPulseFastWide: _bindgen_ty_7 = 4;
+pub const kRenderFxFadeSlow: _bindgen_ty_7 = 5;
+pub const kRenderFxFadeFast: _bindgen_ty_7 = 6;
+pub const kRenderFxSolidSlow: _bindgen_ty_7 = 7;
+pub const kRenderFxSolidFast: _bindgen_ty_7 = 8;
+pub const kRenderFxStrobeSlow: _bindgen_ty_7 = 9;
+pub const kRenderFxStrobeFast: _bindgen_ty_7 = 10;
+pub const kRenderFxStrobeFaster: _bindgen_ty_7 = 11;
+pub const kRenderFxFlickerSlow: _bindgen_ty_7 = 12;
+pub const kRenderFxFlickerFast: _bindgen_ty_7 = 13;
+pub const kRenderFxNoDissipation: _bindgen_ty_7 = 14;
+pub const kRenderFxDistort: _bindgen_ty_7 = 15;
+pub const kRenderFxHologram: _bindgen_ty_7 = 16;
+pub const kRenderFxDeadPlayer: _bindgen_ty_7 = 17;
+pub const kRenderFxExplode: _bindgen_ty_7 = 18;
+pub const kRenderFxGlowShell: _bindgen_ty_7 = 19;
+pub const kRenderFxClampMinScale: _bindgen_ty_7 = 20;
+pub const kRenderFxLightMultiplier: _bindgen_ty_7 = 21;
+pub type _bindgen_ty_7 = ::core::ffi::c_uint;
 pub type func_t = ::core::ffi::c_int;
 pub type string_t = ::core::ffi::c_int;
 pub type word = ::core::ffi::c_ushort;
@@ -825,24 +849,24 @@ pub struct trace_t {
     pub ent: *mut edict_t,
     pub hitgroup: ::core::ffi::c_int,
 }
-pub const FCVAR_ARCHIVE: _bindgen_ty_5 = 1;
-pub const FCVAR_USERINFO: _bindgen_ty_5 = 2;
-pub const FCVAR_SERVER: _bindgen_ty_5 = 4;
-pub const FCVAR_EXTDLL: _bindgen_ty_5 = 8;
-pub const FCVAR_CLIENTDLL: _bindgen_ty_5 = 16;
-pub const FCVAR_PROTECTED: _bindgen_ty_5 = 32;
-pub const FCVAR_SPONLY: _bindgen_ty_5 = 64;
-pub const FCVAR_PRINTABLEONLY: _bindgen_ty_5 = 128;
-pub const FCVAR_UNLOGGED: _bindgen_ty_5 = 256;
-pub const FCVAR_NOEXTRAWHITESPACE: _bindgen_ty_5 = 512;
-pub const FCVAR_PRIVILEGED: _bindgen_ty_5 = 1024;
-pub const FCVAR_FILTERABLE: _bindgen_ty_5 = 2048;
-pub const FCVAR_GLCONFIG: _bindgen_ty_5 = 4096;
-pub const FCVAR_CHANGED: _bindgen_ty_5 = 8192;
-pub const FCVAR_GAMEUIDLL: _bindgen_ty_5 = 16384;
-pub const FCVAR_CHEAT: _bindgen_ty_5 = 32768;
-pub const FCVAR_LATCH: _bindgen_ty_5 = 1073741824;
-pub type _bindgen_ty_5 = ::core::ffi::c_uint;
+pub const FCVAR_ARCHIVE: _bindgen_ty_8 = 1;
+pub const FCVAR_USERINFO: _bindgen_ty_8 = 2;
+pub const FCVAR_SERVER: _bindgen_ty_8 = 4;
+pub const FCVAR_EXTDLL: _bindgen_ty_8 = 8;
+pub const FCVAR_CLIENTDLL: _bindgen_ty_8 = 16;
+pub const FCVAR_PROTECTED: _bindgen_ty_8 = 32;
+pub const FCVAR_SPONLY: _bindgen_ty_8 = 64;
+pub const FCVAR_PRINTABLEONLY: _bindgen_ty_8 = 128;
+pub const FCVAR_UNLOGGED: _bindgen_ty_8 = 256;
+pub const FCVAR_NOEXTRAWHITESPACE: _bindgen_ty_8 = 512;
+pub const FCVAR_PRIVILEGED: _bindgen_ty_8 = 1024;
+pub const FCVAR_FILTERABLE: _bindgen_ty_8 = 2048;
+pub const FCVAR_GLCONFIG: _bindgen_ty_8 = 4096;
+pub const FCVAR_CHANGED: _bindgen_ty_8 = 8192;
+pub const FCVAR_GAMEUIDLL: _bindgen_ty_8 = 16384;
+pub const FCVAR_CHEAT: _bindgen_ty_8 = 32768;
+pub const FCVAR_LATCH: _bindgen_ty_8 = 1073741824;
+pub type _bindgen_ty_8 = ::core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct cvar_s {
@@ -1103,12 +1127,12 @@ pub struct cl_entity_s {
     pub visframe: ::core::ffi::c_int,
     pub cvFloorColor: colorVec,
 }
-pub const AMBIENT_WATER: _bindgen_ty_6 = 0;
-pub const AMBIENT_SKY: _bindgen_ty_6 = 1;
-pub const AMBIENT_SLIME: _bindgen_ty_6 = 2;
-pub const AMBIENT_LAVA: _bindgen_ty_6 = 3;
-pub const NUM_AMBIENTS: _bindgen_ty_6 = 4;
-pub type _bindgen_ty_6 = ::core::ffi::c_uint;
+pub const AMBIENT_WATER: _bindgen_ty_9 = 0;
+pub const AMBIENT_SKY: _bindgen_ty_9 = 1;
+pub const AMBIENT_SLIME: _bindgen_ty_9 = 2;
+pub const AMBIENT_LAVA: _bindgen_ty_9 = 3;
+pub const NUM_AMBIENTS: _bindgen_ty_9 = 4;
+pub type _bindgen_ty_9 = ::core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct dlump_t {

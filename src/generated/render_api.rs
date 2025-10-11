@@ -50,13 +50,13 @@ pub struct lightstyle_t {
     pub interp: qboolean,
     pub time: f32,
 }
-pub const SKYBOX_RIGHT: _bindgen_ty_7 = 0;
-pub const SKYBOX_BACK: _bindgen_ty_7 = 1;
-pub const SKYBOX_LEFT: _bindgen_ty_7 = 2;
-pub const SKYBOX_FORWARD: _bindgen_ty_7 = 3;
-pub const SKYBOX_UP: _bindgen_ty_7 = 4;
-pub const SKYBOX_DOWN: _bindgen_ty_7 = 5;
-pub type _bindgen_ty_7 = ::core::ffi::c_uint;
+pub const SKYBOX_RIGHT: _bindgen_ty_10 = 0;
+pub const SKYBOX_BACK: _bindgen_ty_10 = 1;
+pub const SKYBOX_LEFT: _bindgen_ty_10 = 2;
+pub const SKYBOX_FORWARD: _bindgen_ty_10 = 3;
+pub const SKYBOX_UP: _bindgen_ty_10 = 4;
+pub const SKYBOX_DOWN: _bindgen_ty_10 = 5;
+pub type _bindgen_ty_10 = ::core::ffi::c_uint;
 pub const texFlags_t_TF_COLORMAP: texFlags_t = 0;
 pub const texFlags_t_TF_NEAREST: texFlags_t = 1;
 pub const texFlags_t_TF_KEEP_SOURCE: texFlags_t = 2;

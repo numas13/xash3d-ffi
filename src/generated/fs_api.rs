@@ -10,27 +10,27 @@ pub const FILESYSTEM_INTERFACE_VERSION: &::core::ffi::CStr =
 #[allow(unsafe_code)]
 pub const GET_FS_API: &::core::ffi::CStr =
     unsafe { ::core::ffi::CStr::from_bytes_with_nul_unchecked(b"GetFSAPI\0") };
-pub const FS_STATIC_PATH: _bindgen_ty_7 = 1;
-pub const FS_NOWRITE_PATH: _bindgen_ty_7 = 2;
-pub const FS_GAMEDIR_PATH: _bindgen_ty_7 = 4;
-pub const FS_CUSTOM_PATH: _bindgen_ty_7 = 8;
-pub const FS_GAMERODIR_PATH: _bindgen_ty_7 = 16;
-pub const FS_SKIP_ARCHIVED_WADS: _bindgen_ty_7 = 32;
-pub const FS_LOAD_PACKED_WAD: _bindgen_ty_7 = 64;
-pub const FS_MOUNT_HD: _bindgen_ty_7 = 128;
-pub const FS_MOUNT_LV: _bindgen_ty_7 = 256;
-pub const FS_MOUNT_ADDON: _bindgen_ty_7 = 512;
-pub const FS_MOUNT_L10N: _bindgen_ty_7 = 1024;
-pub const FS_GAMEDIRONLY_SEARCH_FLAGS: _bindgen_ty_7 = 28;
-pub type _bindgen_ty_7 = ::core::ffi::c_uint;
+pub const FS_STATIC_PATH: _bindgen_ty_10 = 1;
+pub const FS_NOWRITE_PATH: _bindgen_ty_10 = 2;
+pub const FS_GAMEDIR_PATH: _bindgen_ty_10 = 4;
+pub const FS_CUSTOM_PATH: _bindgen_ty_10 = 8;
+pub const FS_GAMERODIR_PATH: _bindgen_ty_10 = 16;
+pub const FS_SKIP_ARCHIVED_WADS: _bindgen_ty_10 = 32;
+pub const FS_LOAD_PACKED_WAD: _bindgen_ty_10 = 64;
+pub const FS_MOUNT_HD: _bindgen_ty_10 = 128;
+pub const FS_MOUNT_LV: _bindgen_ty_10 = 256;
+pub const FS_MOUNT_ADDON: _bindgen_ty_10 = 512;
+pub const FS_MOUNT_L10N: _bindgen_ty_10 = 1024;
+pub const FS_GAMEDIRONLY_SEARCH_FLAGS: _bindgen_ty_10 = 28;
+pub type _bindgen_ty_10 = ::core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct searchpath_s {
     _unused: [u8; 0],
 }
 pub type searchpath_t = searchpath_s;
-pub const IAES_ONLY_REAL_ARCHIVES: _bindgen_ty_8 = 1;
-pub type _bindgen_ty_8 = ::core::ffi::c_uint;
+pub const IAES_ONLY_REAL_ARCHIVES: _bindgen_ty_11 = 1;
+pub type _bindgen_ty_11 = ::core::ffi::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct search_t {
@@ -91,7 +91,7 @@ pub struct fs_dllinfo_t {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct fs_globals_t {
-    pub GameInfo: *mut gameinfo_t,
+    pub GameInfo: *const gameinfo_t,
     pub games: [*mut gameinfo_t; 512usize],
     pub numgames: ::core::ffi::c_int,
 }

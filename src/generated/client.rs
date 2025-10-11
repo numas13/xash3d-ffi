@@ -109,11 +109,6 @@ pub struct hud_player_info_s {
 pub type hud_player_info_t = hud_player_info_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagPOINT {
-    _unused: [u8; 0],
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct cl_enginefuncs_s {
     pub pfnSPR_Load: ::core::option::Option<
         unsafe extern "C" fn(szPicName: *const ::core::ffi::c_char) -> HSPRITE,
