@@ -8,6 +8,8 @@ use core::ffi::{c_int, c_ushort};
 
 pub use libc::{off_t, FILE};
 
+pub use self::vec::{vec2_t, vec3_t, vec4_t};
+
 pub type uint = core::ffi::c_uint;
 pub type va_list = core::ffi::c_void;
 
@@ -153,3 +155,37 @@ const_assert_size!(mnode_t, 52, 72);
 const_assert_size!(mextrasurf_t, 324, 496);
 const_assert_size!(decal_t, 60, 88);
 const_assert_size!(mfaceinfo_t, 176, 304);
+
+impl_copy_clone! {
+    aliashdr_t,
+    alight_s,
+    beam_s,
+    cl_entity_s,
+    clientdata_s,
+    decal_s,
+    dlight_s,
+    dmodel_t,
+    dplane_t,
+    dvertex_t,
+    entity_state_s,
+    hull_s,
+    latchedvars_t,
+    local_state_s,
+    mextrasurf_s,
+    mfacebevel_t,
+    mfaceinfo_t,
+    model_s,
+    mplane_s,
+    mvertex_t,
+    particle_s,
+    plane_t,
+    player_info_s,
+    pmplane_t,
+    pmtrace_s,
+    position_history_t,
+    ref_overview_s,
+    ref_params_s,
+    ref_viewpass_s,
+    trace_t,
+    usercmd_s,
+}

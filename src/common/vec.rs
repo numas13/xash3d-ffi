@@ -1,6 +1,18 @@
 use core::ops;
 
-use crate::common::{self, vec2_t, vec3_t, vec4_t};
+use crate::common::{self, vec_t};
+
+#[derive(Debug, Copy, Clone)]
+#[repr(transparent)]
+pub struct vec2_t(pub [vec_t; 2]);
+
+#[derive(Debug, Copy, Clone)]
+#[repr(transparent)]
+pub struct vec3_t(pub [vec_t; 3]);
+
+#[derive(Debug, Copy, Clone)]
+#[repr(transparent)]
+pub struct vec4_t(pub [vec_t; 4]);
 
 const PITCH: usize = common::PITCH as usize;
 const YAW: usize = common::YAW as usize;

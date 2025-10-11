@@ -28,3 +28,17 @@ macro_rules! const_assert_size {
         });
     };
 }
+
+macro_rules! impl_copy_clone {
+    ($( $ty:ty ),* $(,)?) => {
+        $(
+            impl Copy for $ty {}
+
+            impl Clone for $ty {
+                fn clone(&self) -> Self {
+                    *self
+                }
+            }
+        )*
+    };
+}

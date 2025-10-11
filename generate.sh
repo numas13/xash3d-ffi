@@ -41,13 +41,13 @@ function generate() {
         --blocklist-type "mnode_s" \
         --blocklist-type "mnode_s__.*" \
         --blocklist-type "float_bits_[st]" \
+        --blocklist-type "vec[234]_t" \
         --blocklist-var "boxpnt" \
         --blocklist-var "gEntityInterface" \
         --blocklist-var "gNewDLLFunctions" \
         --blocklist-var "m_bytenormals" \
         --blocklist-var "svc_.*strings" \
         --opaque-type va_list \
-        --new-type-alias "vec[234]_t" \
         "$@" -- $CFLAGS > "$output"
 }
 

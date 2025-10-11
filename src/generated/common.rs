@@ -739,15 +739,6 @@ pub struct tagPOINT {
 pub type POINT = tagPOINT;
 pub type byte = u8;
 pub type vec_t = f32;
-#[repr(transparent)]
-#[derive(Debug, Copy, Clone)]
-pub struct vec2_t(pub [vec_t; 2usize]);
-#[repr(transparent)]
-#[derive(Debug, Copy, Clone)]
-pub struct vec3_t(pub [vec_t; 3usize]);
-#[repr(transparent)]
-#[derive(Debug, Copy, Clone)]
-pub struct vec4_t(pub [vec_t; 4usize]);
 pub type quat_t = [vec_t; 4usize];
 pub type rgba_t = [byte; 4usize];
 pub type rgb_t = [byte; 3usize];
@@ -831,13 +822,11 @@ pub struct edict_s {
 }
 pub type edict_t = edict_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct plane_t {
     pub normal: vec3_t,
     pub dist: f32,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct trace_t {
     pub allsolid: qboolean,
     pub startsolid: qboolean,
@@ -886,7 +875,6 @@ pub struct con_nprint_s {
 }
 pub type con_nprint_t = con_nprint_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct usercmd_s {
     pub lerp_msec: ::core::ffi::c_short,
     pub msec: byte,
@@ -919,7 +907,6 @@ pub struct mouth_t {
     pub sndavg: ::core::ffi::c_int,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct latchedvars_t {
     pub prevanimtime: f32,
     pub sequencetime: f32,
@@ -932,7 +919,6 @@ pub struct latchedvars_t {
     pub prevblending: [byte; 2usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct position_history_t {
     pub animtime: f32,
     pub origin: vec3_t,
@@ -941,7 +927,6 @@ pub struct position_history_t {
 pub type cl_entity_t = cl_entity_s;
 pub type entity_state_t = entity_state_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct entity_state_s {
     pub entityType: ::core::ffi::c_int,
     pub number: ::core::ffi::c_int,
@@ -1007,7 +992,6 @@ pub struct entity_state_s {
     pub vuser4: vec3_t,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct clientdata_s {
     pub origin: vec3_t,
     pub velocity: vec3_t,
@@ -1079,7 +1063,6 @@ pub struct weapon_data_s {
 }
 pub type weapon_data_t = weapon_data_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct local_state_s {
     pub playerstate: entity_state_t,
     pub client: clientdata_t,
@@ -1104,7 +1087,6 @@ pub struct event_args_s {
 }
 pub type event_args_t = event_args_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct cl_entity_s {
     pub index: ::core::ffi::c_int,
     pub player: qboolean,
@@ -1153,7 +1135,6 @@ pub struct dextrahdr_t {
     pub lumps: [dlump_t; 12usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct dmodel_t {
     pub mins: vec3_t,
     pub maxs: vec3_t,
@@ -1170,12 +1151,10 @@ pub struct dmiptexlump_t {
     pub dataofs: [::core::ffi::c_int; 4usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct dvertex_t {
     pub point: vec3_t,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct dplane_t {
     pub normal: vec3_t,
     pub dist: f32,
@@ -1293,7 +1272,6 @@ pub const modtype_t_mod_alias: modtype_t = 2;
 pub const modtype_t_mod_studio: modtype_t = 3;
 pub type modtype_t = ::core::ffi::c_int;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct mplane_s {
     pub normal: vec3_t,
     pub dist: f32,
@@ -1302,7 +1280,6 @@ pub struct mplane_s {
     pub pad: [byte; 2usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct mvertex_t {
     pub position: vec3_t,
 }
@@ -1352,7 +1329,6 @@ pub struct texture_s {
 }
 pub type texture_t = texture_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct mfaceinfo_t {
     pub landname: [::core::ffi::c_char; 16usize],
     pub texture_step: ::core::ffi::c_ushort,
@@ -1363,7 +1339,6 @@ pub struct mfaceinfo_t {
     pub reserved: [isize; 32usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct mfacebevel_t {
     pub edges: *mut mplane_t,
     pub numedges: ::core::ffi::c_int,
@@ -1393,7 +1368,6 @@ pub type mnode_t = mnode_s;
 pub type msurface_t = msurface_s;
 pub type decal_t = decal_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct decal_s {
     pub pnext: *mut decal_t,
     pub psurface: *mut msurface_t,
@@ -1423,7 +1397,6 @@ pub struct mleaf_s {
 }
 pub type mleaf_t = mleaf_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct mextrasurf_s {
     pub mins: vec3_t,
     pub maxs: vec3_t,
@@ -1475,7 +1448,6 @@ pub struct msurface_s {
     pub pdecals: *mut decal_t,
 }
 #[repr(C)]
-#[derive(Copy, Clone)]
 pub struct hull_s {
     pub __bindgen_anon_1: hull_s__bindgen_ty_1,
     pub planes: *mut mplane_t,
@@ -1498,7 +1470,6 @@ pub struct cache_user_s {
 }
 pub type cache_user_t = cache_user_s;
 #[repr(C)]
-#[derive(Copy, Clone)]
 pub struct model_s {
     pub name: [::core::ffi::c_char; 64usize],
     pub needload: qboolean,
@@ -1555,7 +1526,6 @@ pub union model_s__bindgen_ty_2 {
 }
 pub type model_t = model_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct alight_s {
     pub ambientlight: ::core::ffi::c_int,
     pub shadelight: ::core::ffi::c_int,
@@ -1618,7 +1588,6 @@ pub struct customization_s {
 }
 pub type customization_t = customization_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct player_info_s {
     pub userid: ::core::ffi::c_int,
     pub userinfo: [::core::ffi::c_char; 256usize],
@@ -1697,7 +1666,6 @@ pub struct maliasframedesc_t {
     pub name: [::core::ffi::c_char; 16usize],
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct aliashdr_t {
     pub ident: ::core::ffi::c_int,
     pub version: ::core::ffi::c_int,
@@ -1748,14 +1716,12 @@ pub struct screenfade_s {
 }
 pub type screenfade_t = screenfade_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct pmplane_t {
     pub normal: vec3_t,
     pub dist: f32,
 }
 pub type pmtrace_t = pmtrace_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct pmtrace_s {
     pub allsolid: qboolean,
     pub startsolid: qboolean,
@@ -1810,7 +1776,6 @@ extern "C" {
     pub static mut movevars: movevars_t;
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct ref_params_s {
     pub vieworg: vec3_t,
     pub viewangles: vec3_t,
@@ -1848,7 +1813,6 @@ pub struct ref_params_s {
 }
 pub type ref_params_t = ref_params_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct ref_overview_s {
     pub origin: vec3_t,
     pub rotated: qboolean,
@@ -1862,7 +1826,6 @@ pub struct ref_overview_s {
 }
 pub type ref_overview_t = ref_overview_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct ref_viewpass_s {
     pub viewport: [::core::ffi::c_int; 4usize],
     pub vieworigin: vec3_t,
@@ -1895,7 +1858,6 @@ pub const ptype_t_pt_vox_grav: ptype_t = 9;
 pub const ptype_t_pt_clientcustom: ptype_t = 10;
 pub type ptype_t = ::core::ffi::c_uint;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct particle_s {
     pub org: vec3_t,
     pub color: ::core::ffi::c_short,
@@ -1913,7 +1875,6 @@ pub struct particle_s {
 pub type particle_t = particle_s;
 pub type BEAM = beam_s;
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct beam_s {
     pub next: *mut BEAM,
     pub type_: ::core::ffi::c_int,
@@ -1942,7 +1903,6 @@ pub struct beam_s {
     pub particles: *mut particle_s,
 }
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct dlight_s {
     pub origin: vec3_t,
     pub radius: f32,
