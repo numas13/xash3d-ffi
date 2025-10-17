@@ -29,7 +29,7 @@ xash3d-ffi = "0.1"
 
 # Rust version support
 
-The minimum supported Rust toolchain version is currently Rust 1.64.
+The minimum supported Rust toolchain version is currently Rust 1.68.
 
 # Generate bindings
 
